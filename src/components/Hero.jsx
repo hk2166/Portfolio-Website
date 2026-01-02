@@ -5,18 +5,11 @@ const Hero = () => {
     <section id="hero">
       <div className="container">
         <div className="left">
-          <p className="subheading">I'm HEMANT</p>
+          <p style={{ color: "blue", fontWeight: "bold" , fontSize: "30px"}} className="subheading">I'm HEMANT</p>
           <h2 className="heading">
-            <div className="wrapper">
-              <span>I</span>
-            </div>
+           
             
-            <div className="wrapper">
-              <span></span>
-            </div>
-            <div className="wrapper">
-              <span>purpose</span>
-            </div>
+        
           </h2>
           <p className="desc">
             Computer Science student specializing in web development, robotics,
