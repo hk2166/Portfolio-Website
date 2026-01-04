@@ -1,128 +1,139 @@
-// Project Data
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, ExternalLink, Code2 } from "lucide-react";
+
 const projectsData = [
   {
     id: 1,
     title: "Sahayak - AI Teaching Assistant",
     description:
-      "Developed an AI-driven teaching assistant for multi-grade, low-resource classrooms. Implemented speech assessment, multilingual chatbot, quizzes, worksheet generator, and visual aids.",
+      "Developed an AI-driven teaching assistant for multi-grade, low-resource classrooms. Implemented speech assessment, multilingual chatbot, and visual aids.",
     image: "/sahayak.jpeg",
-    tags: ["React", "AI/ML", "Vercel", "Speech Recognition"],
+    tags: ["React", "AI/ML", "Vercel", "Speech"],
     github: "https://github.com/hk2166/Sahayak",
     demo: "https://sahayak-hazel.vercel.app/",
   },
   {
     id: 2,
-    title: "FinTrack - Personal Finance Tracker",
+    title: "FinTrack - Finance Tracker",
     description:
-      "Built a responsive web app for personal finance management. Developed using React.js with intuitive tools to track expenses, categorize transactions, and visualize financial trends.",
+      "Built a responsive web app for personal finance management. Track expenses, categorize transactions, and visualize financial trends.",
     image: "/Fintrack.jpeg",
-    tags: ["React", "Figma", "Finance"],
+    tags: ["React", "Figma", "Finance", "Tailwind"],
     github: "https://github.com/hk2166/Fintrack.git",
     demo: "https://fintrack-peach.vercel.app/",
   },
   {
     id: 3,
-    title: "Awaken - Space Education Platform",
+    title: "Awaken - Space Education",
     description:
-      "Created an educational platform exploring astronomy, galaxies, and black holes with interactive content and multimedia. Features engaging visualizations and educational videos.",
+      "Educational platform exploring astronomy and black holes with interactive content and multimedia visualizations.",
     image: "/project-3.jpeg",
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["HTML", "CSS", "JavaScript", "Edu"],
     demo: "https://hk2166.github.io/SNWproject-CODEVENGERS-/",
   },
   {
     id: 4,
-    title: "SplitBuddy - Expense Splitter App",
+    title: "SplitBuddy - Expense Splitter",
     description:
-      "Built an Android app to simplify expense splitting among friends. Features intuitive UI for adding expenses, calculating shares, and generating summaries.",
+      "Android app to simplify expense splitting among friends. Features intuitive UI for calculating shares and summaries.",
     image: "/Splitbuddy.jpeg",
-    tags: ["Java", "Android", "XML"],
+    tags: ["Java", "Android", "XML", "Finance"],
     demo: "https://drive.google.com/file/d/19kevxFwEun7sER4YOMhImfAbyp45-f9Q/view",
   },
 ];
 
-// Projects Component
 const Projects = () => {
   return (
-    <section id="projects">
-      <div className="container">
-        <h2 className="section-heading" data-outline="Projects">
-          Projects
-        </h2>
-        <p className="section-subtitle">
-          Explore my latest work and innovations
-        </p>
+    <section id="projects" className="section-padding bg-white dark:bg-slate-950">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            Featured <span className="gradient-text">Projects</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            A selection of my recent work in web development, AI, and mobile applications.
+          </p>
+        </div>
 
-        <div className="all-projects">
-          {projectsData.map((project) => (
-            <div key={project.id} className="item">
-              <div className="img">
-                <img src={project.image} alt={project.title} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {projectsData.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-[var(--border-color)] hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10"
+            >
+              <div className="aspect-video overflow-hidden relative">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                  <div className="flex gap-4">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white/20 backdrop-blur-md rounded-xl text-white hover:bg-primary transition-colors"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white/20 backdrop-blur-md rounded-xl text-white hover:bg-primary transition-colors"
+                      >
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
 
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.description}</p>
-
-                <div className="tech-tags">
+              <div className="p-8">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, index) => (
-                    <span key={index} className="tech-tag">
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-lg border border-primary/10"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                <div className="project-links">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      className="external-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>GitHub</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </a>
-                  )}
-
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      className="external-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>Live Demo</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </a>
-                  )}
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
+                  {project.description}
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-primary">
+                  <Code2 size={16} />
+                  <span>View Details</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <a
+            href="https://github.com/hk2166"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl font-bold hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg"
+          >
+            <Github size={20} /> View All on GitHub
+          </a>
         </div>
       </div>
     </section>
