@@ -1,79 +1,13 @@
-/* Custom utility classes and overrides */
+/* Global App Styles */
 
-:root {
-  --primary: #6366f1;
-  --secondary: #ec4899;
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Smooth scrolling for the whole page */
-html {
-  scroll-behavior: smooth;
+main {
+  flex: 1;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f1f5f9;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background-color: #0f172a;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 9999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #94a3b8;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background-color: #334155;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background-color: #475569;
-}
-
-/* Ensure particles stay in background */
-#tsparticles {
-  position: fixed !important;
-  z-index: 0 !important;
-  pointer-events: none;
-}
-
-/* Navigation link active state simulation */
-nav a {
-  position: relative;
-  transition: color 0.3s;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary);
-  transition: all 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-.nav-link-active {
-  color: var(--primary);
-}
-
-.nav-link-active::after {
-  width: 100%;
-}
+/* Custom transitions and other global app-specific styles can go here */
