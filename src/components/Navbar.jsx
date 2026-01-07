@@ -15,11 +15,11 @@ export function Navbar({ darkMode, toggleDarkMode }) {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/#about' },
+    { name: 'Services', to: '/#services' },
+    { name: 'Projects', to: '/#projects' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -32,13 +32,23 @@ export function Navbar({ darkMode, toggleDarkMode }) {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors duration-200"
-            >
-              {link.name}
-            </a>
+            link.to.startsWith('/#') ? (
+              <a
+                key={link.name}
+                href={link.to}
+                className="text-sm font-medium hover:text-primary transition-colors duration-200"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.to}
+                className="text-sm font-medium hover:text-primary transition-colors duration-200"
+              >
+                {link.name}
+              </Link>
+            )
           ))}
           <button
             onClick={toggleDarkMode}
@@ -70,14 +80,25 @@ export function Navbar({ darkMode, toggleDarkMode }) {
         <div className="md:hidden absolute top-full left-0 w-full glass-morphism border-t border-white/10 py-4 px-6 animate-in slide-in-from-top duration-300">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-primary transition-colors py-2"
-              >
-                {link.name}
-              </a>
+              link.to.startsWith('/#') ? (
+                <a
+                  key={link.name}
+                  href={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-medium hover:text-primary transition-colors py-2"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-medium hover:text-primary transition-colors py-2"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
         </div>

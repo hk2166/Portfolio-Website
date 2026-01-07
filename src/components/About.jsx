@@ -20,41 +20,12 @@ const About = () => {
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-5"
-            >
-              <div className="relative group max-w-md mx-auto">
-                <div className="absolute -inset-4 bg-linear-to-r from-primary to-secondary rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <div className="relative glass-morphism rounded-3xl overflow-hidden shadow-2xl p-6">
-                  <img 
-                    src="/profile.jpg" 
-                    alt="Hemant" 
-                    className="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                
-                <div className="mt-8 flex justify-around">
-                  {skills.map((skill, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2">
-                      <div className="p-3 bg-primary/10 text-primary rounded-xl">
-                        {skill.icon}
-                      </div>
-                      <span className="text-xs font-bold text-[var(--text-secondary)]">{skill.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 space-y-8"
+            className="space-y-8"
           >
             <div>
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
@@ -101,6 +72,34 @@ const About = () => {
               >
                 <Send size={20} /> Contact Me
               </Link>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col gap-6"
+          >
+            <div className="grid grid-cols-1 gap-6">
+              {skills.map((skill, idx) => (
+                <div 
+                  key={idx} 
+                  className="group flex items-center gap-6 p-6 rounded-3xl glass-morphism border border-[var(--border-color)] hover:border-primary transition-all duration-300"
+                >
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    {React.cloneElement(skill.icon, { size: 32 })}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold mb-1">{skill.label}</h4>
+                    <p className="text-sm text-[var(--text-secondary)]">
+                      {idx === 0 && "Building responsive and scalable web applications."}
+                      {idx === 1 && "Developing intelligent systems and autonomous robots."}
+                      {idx === 2 && "Strong foundation in data structures and algorithms."}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
