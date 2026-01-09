@@ -29,12 +29,6 @@ const Services = () => {
       color: "bg-orange-500/10 text-orange-500"
     },
     {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Cloud Solutions",
-      desc: "Familiar with cloud platforms and deployment workflows. Ensuring high availability and scalability for web applications.",
-      color: "bg-cyan-500/10 text-cyan-500"
-    },
-    {
       icon: <Smartphone className="w-8 h-8" />,
       title: "Mobile Friendly",
       desc: "Prioritizing mobile-first design principles. Creating seamless experiences across all devices and screen sizes.",

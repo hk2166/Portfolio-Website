@@ -35,27 +35,29 @@ const Contact = () => {
                   is always open!
                 </p>
 
-                <div className="space-y-6">
-                  {[
-                    { icon: <Mail />, title: "Email", value: "9610hemant@gmail.com", href: "mailto:9610hemant@gmail.com" },
-                    { icon: <Phone />, title: "Phone", value: "+91 9610769080", href: "tel:+919610769080" },
-                    { icon: <MapPin />, title: "Location", value: "Pune, Maharashtra", href: "#" }
-                  ].map((item, idx) => (
-                    <a
-                      key={idx}
-                      href={item.href}
-                      className="flex items-center gap-6 p-4 rounded-2xl hover:bg-primary/5 transition-colors group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-[var(--text-light)] uppercase tracking-wider">{item.title}</p>
-                        <p className="text-lg font-bold">{item.value}</p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
+                  <div className="space-y-6">
+                    {[
+                      { icon: <Mail />, title: "Email", value: "9610hemant@gmail.com", href: "mailto:9610hemant@gmail.com" },
+                      { icon: <Phone />, title: "Phone", value: "+91 9610769080", href: "tel:+919610769080" },
+                      { icon: <Linkedin />, title: "LinkedIn", value: "hemant9610", href: "https://www.linkedin.com/in/hemant9610/" },
+                    ].map((item, idx) => (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        target={item.href.startsWith('http') ? "_blank" : undefined}
+                        rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                        className="flex items-center gap-6 p-4 rounded-2xl hover:bg-primary/5 transition-colors group"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                          {React.cloneElement(item.icon, { size: 24 })}
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[var(--text-light)] uppercase tracking-wider">{item.title}</p>
+                          <p className="text-lg font-bold">{item.value}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
               </div>
 
               <div className="p-8 rounded-3xl bg-linear-to-br from-primary to-secondary text-white shadow-xl shadow-primary/20">
@@ -68,55 +70,6 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-[var(--border-color)] shadow-2xl"
-            >
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold ml-1">Your Name</label>
-                    <input
-                      type="text"
-                      placeholder="John Doe"
-                      className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[var(--border-color)] focus:border-primary outline-none transition-all"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold ml-1">Email Address</label>
-                    <input
-                      type="email"
-                      placeholder="john@example.com"
-                      className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[var(--border-color)] focus:border-primary outline-none transition-all"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold ml-1">Subject</label>
-                  <input
-                    type="text"
-                    placeholder="Project Inquiry"
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[var(--border-color)] focus:border-primary outline-none transition-all"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold ml-1">Message</label>
-                  <textarea
-                    rows="5"
-                    placeholder="Tell me about your project..."
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[var(--border-color)] focus:border-primary outline-none transition-all resize-none"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20"
-                >
-                  <Send size={18} /> Send Message
-                </button>
-              </form>
-            </motion.div>
           </div>
         </div>
       </section>
