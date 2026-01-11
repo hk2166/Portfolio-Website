@@ -21,20 +21,20 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5"
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-linear-to-r from-primary to-secondary rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative glass-morphism rounded-3xl overflow-hidden shadow-2xl p-6">
-                <img 
-                  src="/profile.jpg" 
-                  alt="Hemant" 
-                  className="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
-                />
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5"
+            >
+              <div className="relative group max-w-md mx-auto">
+                <div className="absolute -inset-4 bg-linear-to-r from-primary to-secondary rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div className="relative glass-morphism rounded-3xl overflow-hidden shadow-2xl p-6">
+                  <img 
+                    src="/profile.jpg" 
+                    alt="Hemant" 
+                    className="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                  />
                 
                 <div className="mt-8 flex justify-around">
                   {skills.map((skill, idx) => (
