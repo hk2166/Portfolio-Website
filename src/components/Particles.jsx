@@ -2,7 +2,8 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 
-const ParticlesComponent = () => {
+const ParticlesComponent = ({ darkMode }) => {
+  const particleColor = darkMode ? "#818cf8" : "#4f46e5";
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
@@ -21,13 +22,13 @@ const ParticlesComponent = () => {
             },
           },
           color: {
-            value: "#5924ed",
+            value: particleColor,
           },
           shape: {
             type: "circle",
           },
           opacity: {
-            value: 0.5,
+            value: darkMode ? 0.3 : 0.5,
             random: false,
           },
           size: {
@@ -37,8 +38,8 @@ const ParticlesComponent = () => {
           line_linked: {
             enable: true,
             distance: 150,
-            color: "#5924ed",
-            opacity: 0.4,
+            color: particleColor,
+            opacity: darkMode ? 0.2 : 0.3,
             width: 1,
           },
           move: {
