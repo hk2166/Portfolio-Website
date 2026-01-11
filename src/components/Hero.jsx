@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
@@ -33,12 +33,12 @@ const Hero = () => {
               >
                 See My Work <ArrowRight size={20} />
               </a>
-              <a 
-                href="/contact" 
+              <Link 
+                to="/contact" 
                 className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1"
               >
                 Get in Touch
-              </a>
+              </Link>
             </div>
 
             <div className="flex gap-6 items-center">
