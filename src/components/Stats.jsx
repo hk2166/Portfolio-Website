@@ -1,120 +1,103 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 
 const Stats = () => {
+  const education = [
+    {
+      degree: "Bachelor of Science (BS)",
+      major: "Computer Science",
+      institution: "IIT Madras",
+      duration: "2024 - 2028",
+      icon: <GraduationCap size={24} />,
+      current: true
+    },
+    {
+      degree: "Bachelor of Technology (B.Tech)",
+      major: "Computer Science & Engineering",
+      institution: "Ajeenkya D.Y. Patil University",
+      duration: "2024 - 2028",
+      icon: <Award size={24} />,
+      current: true
+    },
+    {
+      degree: "Senior Secondary Education",
+      major: "Science",
+      institution: "Kala Vidhya Mandir School",
+      duration: "Completed",
+      icon: <MapPin size={24} />,
+      current: false
+    }
+  ];
+
   return (
-    <section id="stats">
-      <div className="container">
-        <h2 className="section-heading" data-outline="EDUCATION">
-          EDUCATION
-        </h2>
-        <div className="education-wrapper">
-          <div className="education-intro">
-            <p className="intro-text">
-              Currently pursuing dual Bachelor's degrees in Computer Science and
-              Engineering. Building a strong foundation in both theoretical
-              concepts and practical applications through hands-on projects and
-              coursework. Consistently working on expanding technical skills and
-              gaining industry-relevant experience.
+    <section id="stats" className="section-padding bg-[var(--bg-secondary)]">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+              My <span className="gradient-text">Education</span> Journey
+            </h2>
+            <div className="w-20 h-1.5 bg-primary rounded-full mb-8"></div>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-10">
+              I am currently pursuing dual degrees in Computer Science, bridging the gap 
+              between theoretical foundations at IIT Madras and practical engineering 
+              applications at ADYPU. This unique educational path allows me to develop 
+              a comprehensive understanding of the field.
             </p>
-          </div>
-
-          <div className="education-timeline">
-            <div className="education-item">
-              <div className="education-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  />
-                </svg>
+            
+            <div className="relative p-8 rounded-3xl glass-morphism overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <GraduationCap size={120} />
               </div>
-              <div className="education-content">
-                <h3 className="degree-title">Bachelor of Science (BS)</h3>
-                <p className="degree-major">Computer Science</p>
-                <p className="institution">IIT Madras</p>
-                <p className="duration">2024 - 2028</p>
-              </div>
+              <p className="relative z-10 text-xl font-medium italic text-[var(--text-primary)]">
+                "Learning is a lifelong process of keeping your mind open and your skills sharp."
+              </p>
             </div>
+          </motion.div>
 
-            <div className="education-item">
-              <div className="education-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  />
-                </svg>
-              </div>
-              <div className="education-content">
-                <h3 className="degree-title">
-                  Bachelor of Technology (B.Tech)
-                </h3>
-                <p className="degree-major">Computer Science & Engineering</p>
-                <p className="institution">Ajeenkya D.Y. Patil University</p>
-                <p className="duration">2024 - 2028</p>
-              </div>
-            </div>
-
-            <div className="education-item">
-              <div className="education-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-              </div>
-              <div className="education-content">
-                <h3 className="degree-title">Senior Secondary Education</h3>
-                <p className="institution">Kala Vidhya Mandir School</p>
-                <p className="duration">Completed</p>
-              </div>
-            </div>
+          <div className="space-y-6">
+            {education.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="relative p-6 rounded-2xl bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary transition-all group"
+              >
+                {item.current && (
+                  <span className="absolute top-4 right-4 px-3 py-1 bg-green-500/10 text-green-500 text-xs font-bold rounded-full">
+                    Current
+                  </span>
+                )}
+                <div className="flex gap-6 items-start">
+                  <div className="p-4 bg-primary/10 text-primary rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                      {item.degree}
+                    </h3>
+                    <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">
+                      {item.major}
+                    </p>
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm text-[var(--text-secondary)] flex items-center gap-2">
+                        <MapPin size={14} /> {item.institution}
+                      </p>
+                      <p className="text-sm text-primary font-medium flex items-center gap-2">
+                        <Calendar size={14} /> {item.duration}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

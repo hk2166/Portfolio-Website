@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Particles from "./components/Particles";
 import ScrollTop from "./components/ScrollTop";
+import { Navbar } from "./components/Navbar";
 import "./App.css";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
       setDarkMode(true);
-      document.body.classList.add("dark-mode");
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
@@ -22,25 +23,27 @@ function App() {
     setDarkMode(newMode);
 
     if (newMode) {
-      document.body.classList.add("dark-mode");
+      document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
-      document.body.classList.remove("dark-mode");
+      document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
   };
 
   return (
     <Router>
-      <div className="App">
+      <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
         <Particles />
-        <div className="dark-mode-toggle" onClick={toggleDarkMode}></div>
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <ScrollTop />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <main className="pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   );

@@ -1,109 +1,81 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Monitor, Cpu, Code2, Database, Globe, Smartphone } from "lucide-react";
 
 const Services = () => {
+  const skills = [
+    {
+      icon: <Monitor className="w-8 h-8" />,
+      title: "Web Development",
+      desc: "Proficient in HTML5, CSS3, JavaScript, and modern frameworks like React. Building responsive, user-friendly websites with clean code and optimized performance.",
+      color: "bg-blue-500/10 text-blue-500"
+    },
+    {
+      icon: <Cpu className="w-8 h-8" />,
+      title: "Robotics & Embedded",
+      desc: "Hands-on experience with Arduino, sensor integration, and autonomous systems. Designed and built maze-solving robots with real-time navigation.",
+      color: "bg-purple-500/10 text-purple-500"
+    },
+    {
+      icon: <Code2 className="w-8 h-8" />,
+      title: "Programming",
+      desc: "Strong foundation in Python and data structures. Experience with algorithm design, problem-solving, and competitive programming.",
+      color: "bg-green-500/10 text-green-500"
+    },
+    {
+      icon: <Database className="w-8 h-8" />,
+      title: "Backend Systems",
+      desc: "Developing efficient server-side logic and database schemas. Experience with API integration and data management.",
+      color: "bg-orange-500/10 text-orange-500"
+    },
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: "Cloud Solutions",
+      desc: "Familiar with cloud platforms and deployment workflows. Ensuring high availability and scalability for web applications.",
+      color: "bg-cyan-500/10 text-cyan-500"
+    },
+    {
+      icon: <Smartphone className="w-8 h-8" />,
+      title: "Mobile Friendly",
+      desc: "Prioritizing mobile-first design principles. Creating seamless experiences across all devices and screen sizes.",
+      color: "bg-pink-500/10 text-pink-500"
+    }
+  ];
+
   return (
-    <section id="services">
-      <div className="container">
-        <h2 className="section-heading" data-outline="SKILLS">
-          SKILLS
-        </h2>
-        <div className="all-items">
-          <div className="item">
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1"
-                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <h3 className="item-heading">Web Development</h3>
-            <p className="item-desc">
-              Proficient in HTML5, CSS3, JavaScript, and modern frameworks like
-              React. Experienced in building responsive, user-friendly websites
-              with clean code and optimized performance. Skilled in creating
-              dynamic web applications with interactive features and seamless
-              user experiences.
-            </p>
-          </div>
+    <section id="services" className="section-padding bg-white dark:bg-slate-950">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            My <span className="gradient-text">Expertise</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            Combining technical skills with creative problem-solving to deliver high-quality digital solutions.
+          </p>
+        </div>
 
-          <div className="item">
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1"
-                  d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                />
-              </svg>
-            </div>
-            <h3 className="item-heading">Robotics & Embedded Systems</h3>
-            <p className="item-desc">
-              Hands-on experience with Arduino, sensor integration, and
-              autonomous systems. Successfully designed and built maze-solving
-              robots with real-time navigation. Strong understanding of
-              electronics, circuit design, and embedded programming for IoT and
-              robotic applications.
-            </p>
-          </div>
-
-          <div className="item">
-            <div className="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                <defs>
-                  <linearGradient
-                    id="pythonGradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop
-                      offset="0%"
-                      style={{ stopColor: "#3776AB", stopOpacity: 1 }}
-                    />
-                    <stop
-                      offset="100%"
-                      style={{ stopColor: "#FFD43B", stopOpacity: 1 }}
-                    />
-                  </linearGradient>
-                </defs>
-                <g fill="url(#pythonGradient)">
-                  <path
-                    d="M127.7,0C80,0,64,22,64,48v32h64v8H48C21,88,0,106.7,0,136v56c0,30.7,21.5,48,48,48h32v-32c0-22.5,18.5-48,48-48h64
-                  c26.7,0,48-21.3,48-48V48c0-26.7-21.5-48-48-48H127.7z M103.7,16c9,0,16.3,7.3,16.3,16.3s-7.3,16.3-16.3,16.3
-                  S87.3,41.3,87.3,32.3S94.7,16,103.7,16z"
-                  />
-                  <path
-                    d="M192,256c47.7,0,64-22,64-48v-32h-64v-8h80c26.7,0,48-18.7,48-48v-56c0-30.7-21.5-48-48-48h-32v32
-                  c0,22.5-18.5,48-48,48h-64c-26.7,0-48,21.3-48,48v56c0,26.7,21.5,48,48,48H192z M216,240c-9,0-16.3-7.3-16.3-16.3
-                  s7.3-16.3,16.3-16.3s16.3,7.3,16.3,16.3S225,240,216,240z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <h3 className="item-heading">Programming & Algorithms</h3>
-            <p className="item-desc">
-              Strong foundation in Python and data structures.
-              Experience with algorithm design, problem-solving, and competitive
-              programming. Proficient in Git version control, debugging, and
-              implementing efficient solutions for complex computational
-              challenges.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group p-8 rounded-3xl bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5"
+            >
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300 ${skill.color}`}>
+                {skill.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+                {skill.title}
+              </h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                {skill.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
