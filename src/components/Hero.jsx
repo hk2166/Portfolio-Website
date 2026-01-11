@@ -26,39 +26,41 @@ const Hero = () => {
               full-stack applications, and innovative solutions that bridge hardware and software.
             </p>
             
-            <div className="flex flex-wrap gap-4 mb-12">
-              <a 
-                href="#projects" 
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20"
-              >
-                See My Work <ArrowRight size={20} />
-              </a>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1"
-              >
-                Get in Touch
-              </Link>
-            </div>
-
-            <div className="flex gap-6 items-center">
-              <span className="text-sm font-medium text-[var(--text-light)]">Follow Me:</span>
-              <div className="flex gap-4">
-                {[
-                  { icon: <Github size={20} />, href: "#" },
-                  { icon: <Linkedin size={20} />, href: "#" },
-                  { icon: <Mail size={20} />, href: "#" }
-                ].map((social, idx) => (
-                  <a 
-                    key={idx}
-                    href={social.href}
-                    className="p-2 text-[var(--text-secondary)] hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+              <div className="flex flex-wrap gap-4 mb-12">
+                <a 
+                  href="/#projects" 
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20"
+                >
+                  See My Work <ArrowRight size={20} />
+                </a>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1"
+                >
+                  Get in Touch
+                </Link>
               </div>
-            </div>
+
+              <div className="flex gap-6 items-center">
+                <span className="text-sm font-medium text-[var(--text-light)]">Follow Me:</span>
+                <div className="flex gap-4">
+                  {[
+                    { icon: <Github size={20} />, href: "https://github.com/hk2166" },
+                    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/hemant9610/" },
+                    { icon: <Mail size={20} />, href: "mailto:9610hemant@gmail.com" }
+                  ].map((social, idx) => (
+                    <a 
+                      key={idx}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-[var(--text-secondary)] hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
           </motion.div>
 
             <motion.div

@@ -9,7 +9,7 @@ const ParticlesComponent = () => {
 
   return (
     <Particles
-      id="particles-js"
+      id="tsparticles"
       init={particlesInit}
       options={{
         particles: {
@@ -52,7 +52,7 @@ const ParticlesComponent = () => {
           },
         },
         interactivity: {
-          detect_on: "canvas",
+          detect_on: "window",
           events: {
             onhover: {
               enable: true,
@@ -75,14 +75,6 @@ const ParticlesComponent = () => {
           },
         },
         retina_detect: true,
-      }}
-      style={{
-        position: "fixed",
-        width: "100%",
-        height: "100%",
-        top: 0,
-        left: 0,
-        zIndex: -1,
       }}
     />
   );

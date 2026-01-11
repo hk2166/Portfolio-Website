@@ -411,6 +411,6 @@ img {
 /* Ensure particles stay in background */
 #tsparticles {
   position: fixed !important;
-  z-index: 0 !important;
+  z-index: -1 !important;
   pointer-events: none;
 }

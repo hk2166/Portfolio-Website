@@ -5,14 +5,6 @@ import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 const Stats = () => {
   const education = [
     {
-      degree: "Bachelor of Science (BS)",
-      major: "Computer Science",
-      institution: "IIT Madras",
-      duration: "2024 - 2028",
-      icon: <GraduationCap size={24} />,
-      current: true
-    },
-    {
       degree: "Bachelor of Technology (B.Tech)",
       major: "Computer Science & Engineering",
       institution: "Ajeenkya D.Y. Patil University",

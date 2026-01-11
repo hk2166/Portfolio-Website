@@ -41,6 +41,15 @@ const projectsData = [
     tags: ["Java", "Android", "XML", "Finance"],
     demo: "https://drive.google.com/file/d/19kevxFwEun7sER4YOMhImfAbyp45-f9Q/view",
   },
+  {
+    id: 5,
+    title: "PY Hand Control",
+    description:
+      "Built a hand gesture based cotroller using openCV",
+    image: "/Splitbuddy.jpeg",
+    tags: ["OpenCV", "Pyhton", "ML"],
+    demo: "https://drive.google.com/file/d/1-znoQ_rykDA7k5LB3AgUC5Xs6MCQNl3q/view?usp=sharing",
+  },
 ];
 
 const Projects = () => {
@@ -130,9 +139,9 @@ const Projects = () => {
             href="https://github.com/hk2166"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl font-bold hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white dark:text-blue-900 text-white rounded-xl font-bold hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg"
           >
-            <Github size={20} /> View All on GitHub
+            <Github size={24} /> View All on GitHub
           </a>
         </div>
       </div>
