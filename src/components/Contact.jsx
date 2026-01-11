@@ -35,39 +35,30 @@ const Contact = () => {
                   is always open!
                 </p>
 
-                  <div className="space-y-6">
-                    {[
-                      { icon: <Mail />, title: "Email", value: "9610hemant@gmail.com", href: "mailto:9610hemant@gmail.com" },
-                      { icon: <Phone />, title: "Phone", value: "+91 9610769080", href: "tel:+919610769080" },
-                      { icon: <Linkedin />, title: "LinkedIn", value: "hemant9610", href: "https://www.linkedin.com/in/hemant9610/" },
-                    ].map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.href}
-                        target={item.href.startsWith('http') ? "_blank" : undefined}
-                        rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                        className="flex items-center gap-6 p-4 rounded-2xl hover:bg-primary/5 transition-colors group"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                          {React.cloneElement(item.icon, { size: 24 })}
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-[var(--text-light)] uppercase tracking-wider">{item.title}</p>
-                          <p className="text-lg font-bold">{item.value}</p>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
+                <div className="space-y-6">
+                  {[
+                    { icon: <Mail />, title: "Email", value: "9610hemant@gmail.com", href: "mailto:9610hemant@gmail.com" },
+                    { icon: <Phone />, title: "Phone", value: "+91 9610769080", href: "tel:+919610769080" },
+                    { icon: <MapPin />, title: "Location", value: "Pune, Maharashtra", href: "#" }
+                  ].map((item, idx) => (
+                    <a
+                      key={idx}
+                      href={item.href}
+                      className="flex items-center gap-6 p-4 rounded-2xl hover:bg-primary/5 transition-colors group"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-[var(--text-light)] uppercase tracking-wider">{item.title}</p>
+                        <p className="text-lg font-bold">{item.value}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              <div className="p-8 rounded-3xl bg-linear-to-br from-primary to-secondary text-white shadow-xl shadow-primary/20">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Sparkles size={20} /> Quick Response
-                </h3>
-                <p className="opacity-90 leading-relaxed">
-                  I typically respond within 24 hours. Looking forward to hearing about your innovative ideas!
-                </p>
-              </div>
+           
             </motion.div>
 
           </div>

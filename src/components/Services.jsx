@@ -37,7 +37,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-white dark:bg-slate-950">
+    <section id="services" className="section-padding bg-[var(--bg-primary)]">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
@@ -57,7 +57,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group p-8 rounded-3xl bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5"
+              className="group p-8 rounded-3xl glass-morphism border border-[var(--border-color)] hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5"
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300 ${skill.color}`}>
                 {skill.icon}

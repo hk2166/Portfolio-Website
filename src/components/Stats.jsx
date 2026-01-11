@@ -54,14 +54,14 @@ const Stats = () => {
 
           <div className="space-y-6">
             {education.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative p-6 rounded-2xl bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary transition-all group"
-              >
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="relative p-6 rounded-2xl glass-morphism border border-[var(--border-color)] hover:border-primary transition-all group"
+                >
                 {item.current && (
                   <span className="absolute top-4 right-4 px-3 py-1 bg-green-500/10 text-green-500 text-xs font-bold rounded-full">
                     Current

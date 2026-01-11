@@ -47,11 +47,11 @@ const About = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/50 border border-[var(--border-color)]">
+              <div className="p-4 rounded-2xl glass-morphism border border-[var(--border-color)]">
                 <p className="text-sm font-medium text-[var(--text-light)] mb-1">Current Focus</p>
                 <p className="font-bold">AI & Autonomous Systems</p>
               </div>
-              <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/50 border border-[var(--border-color)]">
+              <div className="p-4 rounded-2xl glass-morphism border border-[var(--border-color)]">
                 <p className="text-sm font-medium text-[var(--text-light)] mb-1">Education</p>
                 <p className="font-bold">IIT Madras & ADYPU</p>
               </div>
@@ -66,12 +66,12 @@ const About = () => {
               >
                 <FileText size={20} /> Open Resume
               </a>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all"
-              >
-                <Send size={20} /> Contact Me
-              </Link>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center gap-2 glass-morphism border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all"
+                >
+                  <Send size={20} /> Contact Me
+                </Link>
             </div>
           </motion.div>
 

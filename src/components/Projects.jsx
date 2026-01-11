@@ -54,7 +54,7 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-padding bg-white dark:bg-slate-950">
+    <section id="projects" className="section-padding bg-[var(--bg-primary)]">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
@@ -74,7 +74,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-[var(--border-color)] hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10"
+              className="group relative glass-morphism rounded-3xl overflow-hidden border border-[var(--border-color)] hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10"
             >
               <div className="aspect-video overflow-hidden relative">
                 <img

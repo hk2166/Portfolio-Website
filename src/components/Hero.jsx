@@ -33,12 +33,12 @@ const Hero = () => {
                 >
                   See My Work <ArrowRight size={20} />
                 </a>
-                <Link 
-                  to="/contact" 
-                  className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1"
-                >
-                  Get in Touch
-                </Link>
+                  <Link 
+                    to="/contact" 
+                    className="inline-flex items-center gap-2 glass-morphism border border-[var(--border-color)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1"
+                  >
+                    Get in Touch
+                  </Link>
               </div>
 
               <div className="flex gap-6 items-center">
