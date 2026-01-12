@@ -12,8 +12,8 @@
 }
 
 .dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-light: #94a3b8;
@@ -411,6 +411,6 @@ img {
 /* Ensure particles stay in background */
 #tsparticles {
   position: fixed !important;
-  z-index: -1 !important;
+  z-index: 0 !important;
   pointer-events: none;
 }

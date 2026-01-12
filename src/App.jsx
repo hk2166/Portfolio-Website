@@ -33,8 +33,8 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
-        <Particles />
+      <div className="min-h-screen transition-colors duration-300">
+        <Particles darkMode={darkMode} />
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <ScrollTop />
 
