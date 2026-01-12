@@ -41,15 +41,6 @@ const projectsData = [
     tags: ["Java", "Android", "XML", "Finance"],
     demo: "https://drive.google.com/file/d/19kevxFwEun7sER4YOMhImfAbyp45-f9Q/view",
   },
-  {
-    id: 5,
-    title: "PY Hand Control",
-    description:
-      "Built a hand gesture based cotroller using openCV",
-    image: "/Splitbuddy.jpeg",
-    tags: ["OpenCV", "Pyhton", "ML"],
-    demo: "https://drive.google.com/file/d/1-znoQ_rykDA7k5LB3AgUC5Xs6MCQNl3q/view?usp=sharing",
-  },
 ];
 
 const Projects = () => {
