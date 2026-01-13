@@ -1,66 +1,254 @@
-import React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageSquare,
+  User,
+  Sparkles,
+  CheckCircle,
+} from "lucide-react";
 import Footer from "./Footer";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 pt-20">
-      <section id="contact" className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+    <div className="min-h-screen bg-black text-white pt-20">
+      <section
+        id="contact"
+        className="section-padding relative overflow-hidden"
+      >
+        {/* Background decoration */}
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+
+        <div className="container-custom relative z-10">
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-neon-green/20 text-neon-green text-sm font-semibold mb-6"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Sparkles size={16} />
+              Let's Work Together
+            </motion.div>
+            <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
-            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Have a project in mind or just want to say hi? I'd love to hear from you.
+            <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-neon-green to-transparent mx-auto mb-6"></div>
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+              Have a project in mind or just want to say hi? I'd love to hear
+              from you.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-8"
             >
-              <div className="p-8 rounded-3xl glass-morphism border border-[var(--border-color)]">
+              <div className="p-8 glass-card">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <MessageSquare className="text-primary" /> Let's Connect
+                  <MessageSquare className="text-neon-green" size={28} />
+                  Let's Connect
                 </h3>
-                <p className="text-[var(--text-secondary)] mb-8 leading-relaxed">
-                  I'm currently looking for new opportunities and collaborations. 
-                  Whether you have a question or just want to connect, my inbox 
+                <p className="text-neutral-400 mb-8 leading-relaxed">
+                  I'm currently available for freelance work and collaborations.
+                  Whether you have a question or just want to connect, my inbox
                   is always open!
                 </p>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {[
-                    { icon: <Mail />, title: "Email", value: "9610hemant@gmail.com", href: "mailto:9610hemant@gmail.com" },
-                    { icon: <Phone />, title: "Phone", value: "+91 9610769080", href: "tel:+919610769080" },
-                    { icon: <MapPin />, title: "Location", value: "Pune, Maharashtra", href: "#" }
+                    {
+                      icon: <Mail size={20} />,
+                      title: "Email",
+                      value: "9610hemant@gmail.com",
+                      href: "mailto:9610hemant@gmail.com",
+                      gradient: "from-blue-500 to-cyan-500",
+                    },
+                    {
+                      icon: <Phone size={20} />,
+                      title: "Phone",
+                      value: "+91 9610769080",
+                      href: "tel:+919610769080",
+                      gradient: "from-green-500 to-emerald-500",
+                    },
+                    {
+                      icon: <MapPin size={20} />,
+                      title: "Location",
+                      value: "Pune, Maharashtra",
+                      href: "#",
+                      gradient: "from-purple-500 to-pink-500",
+                    },
                   ].map((item, idx) => (
-                    <a
+                    <motion.a
                       key={idx}
                       href={item.href}
-                      className="flex items-center gap-6 p-4 rounded-2xl hover:bg-primary/5 transition-colors group"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
+                      whileHover={{ x: 10, scale: 1.02 }}
+                      className="flex items-center gap-4 p-5 glass-card hover:border-neon-green/30 transition-all group cursor-pointer"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                      <div
+                        className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} bg-opacity-10 text-white group-hover:scale-110 transition-transform`}
+                      >
                         {item.icon}
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-[var(--text-light)] uppercase tracking-wider">{item.title}</p>
-                        <p className="text-lg font-bold">{item.value}</p>
+                        <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
+                          {item.title}
+                        </p>
+                        <p className="text-base font-semibold text-white group-hover:text-neon-green transition-colors">
+                          {item.value}
+                        </p>
                       </div>
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               </div>
 
-           
+              {/* Quote Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="p-8 glass-card relative overflow-hidden group hover:border-neon-green/30 transition-all"
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Sparkles size={100} />
+                </div>
+                <p className="relative z-10 text-lg italic text-neutral-300">
+                  "Innovation distinguishes between a leader and a follower."
+                </p>
+                <p className="relative z-10 text-sm text-neutral-500 mt-4">
+                  — Steve Jobs
+                </p>
+              </motion.div>
             </motion.div>
 
+            {/* Right Column - Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="p-8 glass-card">
+                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <Send className="text-neon-green" size={28} />
+                  Send a Message
+                </h3>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
+                    >
+                      <User size={16} /> Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
+                    >
+                      <Mail size={16} /> Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
+                    >
+                      <MessageSquare size={16} /> Your Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all resize-none"
+                      placeholder="Tell me about your project..."
+                    />
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    className="w-full btn-primary inline-flex items-center justify-center gap-2 relative overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    disabled={isSubmitted}
+                  >
+                    {isSubmitted ? (
+                      <>
+                        <CheckCircle size={20} />
+                        Message Sent!
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send size={20} />
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

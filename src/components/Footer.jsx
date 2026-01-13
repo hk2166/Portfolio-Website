@@ -1,89 +1,202 @@
-import React from "react";
-import { Github, Linkedin, Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+  Heart,
+  ArrowUp,
+} from "lucide-react";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const socialLinks = [
+    {
+      icon: <Github size={20} />,
+      href: "https://github.com/hk2166",
+      label: "GitHub",
+      color: "hover:bg-white hover:text-black",
+    },
+    {
+      icon: <Linkedin size={20} />,
+      href: "https://www.linkedin.com/in/hemant9610/",
+      label: "LinkedIn",
+      color: "hover:bg-blue-500",
+    },
+    {
+      icon: <Instagram size={20} />,
+      href: "https://www.instagram.com/_h3mant__/",
+      label: "Instagram",
+      color: "hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500",
+    },
+    {
+      icon: <Mail size={20} />,
+      href: "mailto:9610hemant@gmail.com",
+      label: "Email",
+      color: "hover:bg-neon-green hover:text-black",
+    },
+  ];
+
+  const quickLinks = ["Home", "About", "Skills", "Projects", "Contact"];
+
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10">
-      <div className="container-custom">
+    <footer className="relative bg-gradient-to-b from-black via-neutral-950 to-black pt-20 pb-10 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+
+      <div className="container-custom relative z-10">
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold gradient-text mb-6">HEMANT</h2>
-            <p className="text-slate-400 max-w-md leading-relaxed mb-8">
-              A passionate developer and tech enthusiast specializing in robotics, AI, 
-              and web development. Building innovative projects that bridge the gap 
-              between hardware and software.
+          {/* Brand Section */}
+          <div className="lg:col-span-2 space-y-6">
+            <motion.h2
+              className="text-3xl font-bold gradient-text"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              HEMANT
+            </motion.h2>
+            <p className="text-neutral-400 max-w-md leading-relaxed">
+              A passionate developer and tech enthusiast specializing in
+              robotics, AI, and web development. Building innovative solutions
+              that bridge hardware and software.
             </p>
-            <div className="flex gap-4">
-              {[
-                { icon: <Github size={20} />, href: "https://github.com/hk2166" },
-                { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/hemant9610/" },
-                { icon: <Instagram size={20} />, href: "https://www.instagram.com/_h3mant__/" },
-                { icon: <Mail size={20} />, href: "mailto:9610hemant@gmail.com" }
-              ].map((social, idx) => (
-                <a 
+
+            {/* Social Links */}
+            <div className="flex gap-3">
+              {socialLinks.map((social, idx) => (
+                <motion.a
                   key={idx}
                   href={social.href}
-                  className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className={`p-3 glass-card rounded-full text-neutral-400 transition-all ${social.color}`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label={social.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
                 >
                   {social.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-            <ul className="space-y-4">
-              {['Home', 'About', 'Services', 'Projects', 'Contact'].map((link) => (
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
                 <li key={link}>
-                  <a 
-                    href={link === 'Home' ? '/' : link === 'Contact' ? '/contact' : `#${link.toLowerCase()}`}
-                    className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 group"
+                  <a
+                    href={
+                      link === "Home"
+                        ? "/"
+                        : link === "Contact"
+                          ? "/contact"
+                          : `#${link.toLowerCase()}`
+                    }
+                    className="text-neutral-400 hover:text-neon-green transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="w-0 h-0.5 bg-neon-green group-hover:w-4 transition-all duration-300"></span>
                     {link}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-6">Contact Info</h3>
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-white">Get in Touch</h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:9610hemant@gmail.com" className="text-slate-400 hover:text-white transition-colors flex items-center gap-3">
-                  <Mail size={18} className="text-primary" />
-                  9610hemant@gmail.com
+                <a
+                  href="mailto:9610hemant@gmail.com"
+                  className="text-neutral-400 hover:text-neon-green transition-colors flex items-center gap-3 group"
+                >
+                  <Mail size={18} className="text-neon-green" />
+                  <span className="text-sm">9610hemant@gmail.com</span>
                 </a>
               </li>
               <li>
-                <a href="tel:+919610769080" className="text-slate-400 hover:text-white transition-colors flex items-center gap-3">
-                  <Phone size={18} className="text-primary" />
-                  +91 9610769080
+                <a
+                  href="tel:+919610769080"
+                  className="text-neutral-400 hover:text-neon-green transition-colors flex items-center gap-3 group"
+                >
+                  <Phone size={18} className="text-neon-green" />
+                  <span className="text-sm">+91 9610769080</span>
                 </a>
               </li>
               <li>
-                <div className="text-slate-400 flex items-center gap-3">
-                  <MapPin size={18} className="text-primary" />
-                  Pune, Maharashtra
+                <div className="text-neutral-400 flex items-center gap-3">
+                  <MapPin size={18} className="text-neon-green" />
+                  <span className="text-sm">Pune, Maharashtra</span>
                 </div>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 text-center md:flex md:justify-between md:text-left">
-          <p className="text-slate-500 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} HEMANT. All rights reserved.
+        {/* Bottom Bar */}
+        <motion.div
+          className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="text-neutral-500 text-sm flex items-center gap-2">
+            &copy; {new Date().getFullYear()} HEMANT. Crafted with{" "}
+            <Heart size={14} className="text-red-500 inline animate-pulse" />{" "}
+            and code
           </p>
-          <div className="flex gap-6 justify-center md:justify-end">
-            <a href="#" className="text-slate-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-slate-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+
+          <div className="flex gap-6 items-center">
+            <a
+              href="#"
+              className="text-neutral-500 hover:text-neon-green text-sm transition-colors"
+            >
+              Privacy
+            </a>
+            <a
+              href="#"
+              className="text-neutral-500 hover:text-neon-green text-sm transition-colors"
+            >
+              Terms
+            </a>
+
+            {/* Scroll to Top */}
+            <motion.button
+              onClick={scrollToTop}
+              className="p-2 glass-card rounded-full text-neutral-400 hover:text-neon-green hover:border-neon-green/50 transition-all"
+              whileHover={{ scale: 1.1, y: -5 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Scroll to top"
+            >
+              <ArrowUp size={18} />
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

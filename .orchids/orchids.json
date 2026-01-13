@@ -1,7 +1,7 @@
 {
-  "projectId": "833021be-f642-4e59-a687-27ca4151645f",
-  "createdAt": 1768143173119,
-  "startupCommands": [
-    "npm install; npm run dev"
-  ]
+ "projectId": "cf12aa16-2567-42ce-be0a-8d925eab923a",
+ "createdAt": 1770398563592,
+ "startupCommands": [
+   "bun run dev"
+ ]
 }
