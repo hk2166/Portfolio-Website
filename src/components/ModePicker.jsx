@@ -50,19 +50,32 @@ export function ModePicker() {
           {/* Mode Cards with Divider */}
           <div className="flex flex-col md:flex-row items-stretch gap-0">
             {/* Dev Card */}
-            <motion.button
-              onClick={() => setMode("dev")}
-              className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              whileHover={{ scale: 1.02, y: -3 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.button
+                onClick={() => setMode("dev")}
+                className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                whileHover={{ scale: 1.02, y: -3 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Spline 3D Background */}
+                <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
+                  <spline-viewer
+                    url="undefined"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "block",
+                    }}
+                  />
+                </div>
 
-              <div className="relative z-10">
+                {/* Overlay gradient to keep text readable */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-green-900/30 z-[1]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1]" />
+
+                <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Code2 className="w-8 h-8 text-neon-green" />
                 </div>
