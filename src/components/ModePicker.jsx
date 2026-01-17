@@ -68,23 +68,23 @@ export function ModePicker() {
                 whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.98 }}
               >
-              {/* Spline 3D Background - lazy loaded */}
-                {showSpline && (
-                  <div className="absolute inset-0 z-0 opacity-0 animate-fade-in group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
-                    <spline-viewer
-                      url="https://prod.spline.design/pIES2o0DsQ9jJMlD/scene.splinecode"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "block",
-                      }}
-                    />
-                  </div>
-                )}
+              {/* Spline 3D Background - lazy loaded, interactive */}
+                  {showSpline && (
+                    <div className="absolute inset-0 z-0 opacity-40 animate-fade-in group-hover:opacity-70 transition-opacity duration-700">
+                      <spline-viewer
+                        url="https://prod.spline.design/pIES2o0DsQ9jJMlD/scene.splinecode"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                  )}
 
-                {/* Overlay gradient to keep text readable */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-green-900/30 z-[1]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1]" />
+                  {/* Overlay gradient to keep text readable */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-green-900/30 z-[1] pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1] pointer-events-none" />
 
                 <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -154,23 +154,23 @@ export function ModePicker() {
               whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Spline 3D Background - lazy loaded */}
-                {showSpline && (
-                  <div className="absolute inset-0 z-0 opacity-0 animate-fade-in group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
-                    <spline-viewer
-                      url="https://prod.spline.design/T5g-jjNSVOMpcKmN/scene.splinecode"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "block",
-                      }}
-                    />
-                  </div>
-                )}
+                {/* Spline 3D Background - lazy loaded, interactive */}
+                  {showSpline && (
+                    <div className="absolute inset-0 z-0 opacity-40 animate-fade-in group-hover:opacity-70 transition-opacity duration-700">
+                      <spline-viewer
+                        url="https://prod.spline.design/T5g-jjNSVOMpcKmN/scene.splinecode"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                  )}
 
-              {/* Overlay gradient to keep text readable */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-blue-900/30 z-[1]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1]" />
+                {/* Overlay gradient to keep text readable */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-blue-900/30 z-[1] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1] pointer-events-none" />
 
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
