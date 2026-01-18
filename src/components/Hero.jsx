@@ -21,7 +21,7 @@ const modeContent = {
 const Hero = () => {
   const { mode } = useMode();
   const content = modeContent[mode] || modeContent.dev;
-  const name = "HEMANT";
+  const name = "";
 
   const letterVariants = {
     initial: { opacity: 0, y: 50 },
@@ -138,7 +138,7 @@ const Hero = () => {
             <div className="overflow-hidden">
               <motion.h1 className="text-6xl md:text-8xl font-extrabold leading-none tracking-tight">
                 <span className="block text-neutral-400 text-2xl md:text-3xl mb-2">
-                  Hi, I'm
+                  
                 </span>
                 <div className="flex">
                   {name.split("").map((letter, index) => (

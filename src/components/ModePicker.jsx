@@ -37,7 +37,7 @@ export function ModePicker() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-24">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -45,14 +45,7 @@ export function ModePicker() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.h1
-              className="text-4xl md:text-6xl font-extrabold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              Hi, I'm <span className="gradient-text">HEMANT</span>
-            </motion.h1>
+            
             <motion.p
               className="text-lg md:text-xl text-neutral-400"
               initial={{ opacity: 0 }}
@@ -64,11 +57,11 @@ export function ModePicker() {
           </motion.div>
 
           {/* Mode Cards with Divider */}
-          <div className="flex flex-col md:flex-row items-stretch gap-0">
+          <div className="flex flex-col md:flex-row items-stretch gap-0 mb-4">
             {/* Dev Card */}
               <motion.button
                 onClick={() => setMode("dev")}
-                className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
+                className="group relative flex-1 p-8 md:p-20 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
