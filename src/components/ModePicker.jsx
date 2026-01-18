@@ -18,14 +18,14 @@ export function ModePicker() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.6 }}
-        >
+        <motion.div
+          className="fixed inset-0 z-[100] bg-black overflow-y-auto"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          >
           {/* Spline 3D Name Background */}
-          <div className="absolute inset-0 z-0">
+          <div className="fixed inset-0 z-0">
             <iframe
               src="https://my.spline.design/zoomglasscopycopy-9WRVQRBTc0D5gaI7WRzdRx7q-o0v/"
               frameBorder="0"
@@ -37,7 +37,7 @@ export function ModePicker() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-24">
+          <div className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-60 pb-16">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
