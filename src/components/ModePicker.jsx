@@ -23,26 +23,26 @@ export function ModePicker() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[100] overflow-y-auto"
+        <motion.div
+          className="fixed inset-0 z-[100] overflow-y-auto snap-y snap-mandatory"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
         {/* Spline 3D Name Background */}
-        <div className="fixed inset-0 z-0">
-          <iframe
-            src="https://my.spline.design/zoomglasscopycopy-9WRVQRBTc0D5gaI7WRzdRx7q-o0v/"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", inset: 0 }}
-          />
+        <div className="fixed inset-0 z-0 pointer-events-none">
+            <iframe
+              src="https://my.spline.design/zoomglasscopycopy-9WRVQRBTc0D5gaI7WRzdRx7q-o0v/"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+            />
         </div>
 
         <div className="relative z-10 w-full">
-          {/* Hero section - full viewport with scroll indicator at bottom */}
-          <div className="min-h-screen flex flex-col items-center justify-end pb-16">
+            {/* Hero section - full viewport with scroll indicator at bottom */}
+            <div className="min-h-screen snap-start flex flex-col items-center justify-end pb-16">
             <motion.button
               onClick={scrollToCards}
               className="flex flex-col items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
@@ -62,8 +62,8 @@ export function ModePicker() {
             </motion.button>
           </div>
 
-          {/* Cards section */}
-          <div ref={cardsRef} className="w-full max-w-5xl mx-auto px-6 pt-12 pb-16">
+            {/* Cards section */}
+            <div ref={cardsRef} className="min-h-screen snap-start flex flex-col justify-center w-full max-w-5xl mx-auto px-6 py-16">
             {/* Header */}
             <motion.div
               className="text-center mb-16"
