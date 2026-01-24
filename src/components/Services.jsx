@@ -63,7 +63,7 @@ const roboticsSkills = [
   },
   {
     icon: <Navigation className="w-8 h-8" />,
-    title: "Autonomous Navigation",
+    title: "d",
     desc: "Designing maze-solving and path-finding algorithms for autonomous robots with real-time obstacle avoidance and decision making.",
     color: "from-green-500 to-emerald-500",
   },
