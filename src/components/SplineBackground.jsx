@@ -26,22 +26,23 @@ export function SplineBackground() {
   return (
     <AnimatePresence>
       {mounted && (
-        <motion.div
-          key={mode}
-          className="fixed inset-0 z-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5 }}
-        >
-          <spline-viewer
-            url={url}
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-            }}
-          />
+    <motion.div
+            key={mode}
+            className="fixed inset-0 z-0 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <spline-viewer
+              url={url}
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "block",
+                pointerEvents: "none",
+              }}
+            />
           {/* Overlay to darken and tint - pointer-events-none so clicks pass through to content above */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 pointer-events-none" />
         </motion.div>

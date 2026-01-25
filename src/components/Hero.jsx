@@ -21,7 +21,7 @@ const modeContent = {
 const Hero = () => {
   const { mode } = useMode();
   const content = modeContent[mode] || modeContent.dev;
-  const name = "";
+  const name = "HEMANT";
 
   const letterVariants = {
     initial: { opacity: 0, y: 50 },
