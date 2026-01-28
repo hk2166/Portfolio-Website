@@ -39,12 +39,6 @@ const Stats = () => {
     },
   ];
 
-  const stats = [
-    { number: "5+", label: "Projects Completed" },
-    { number: "3+", label: "Technologies Mastered" },
-    { number: "2", label: "Degrees Pursuing" },
-  ];
-
   return (
     <section
       id="stats"
@@ -74,23 +68,7 @@ const Stats = () => {
             </p>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-3 gap-4 mb-10">
-              {stats.map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="glass-card p-6 text-center hover:border-neon-green/30 transition-all"
-                >
-                  <div className="text-3xl font-black gradient-text mb-2">
-                    {stat.number}
-                  </div>
-                  <p className="text-xs text-neutral-400">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
+
 
             {/* Quote Card */}
             <motion.div

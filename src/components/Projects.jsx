@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { useMode } from "../context/ModeContext";
-import SpotlightCard from "./SpotlightCard";
+import SpotlightCard from './SpotlightCard';
+  
+
 
 const devProjects = [
   {
@@ -149,102 +151,94 @@ const Projects = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
-            {projectsData.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={cardVariants}
-                whileHover={{ scale: 1.02 }}
-                className="group"
-              >
-                <SpotlightCard
-                  spotlightColor={
-                    isRobotics
-                      ? "rgba(96, 165, 250, 0.2)"
-                      : "rgba(0, 229, 255, 0.2)"
-                  }
-                >
-                  {/* Project Image */}
-                  <div className="relative aspect-video overflow-hidden rounded-t-lg">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10`}
-                    ></div>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+          {projectsData.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className="focus-card group"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-video overflow-hidden rounded-t-xl">
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10`}
+                ></div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
 
-                    {/* Overlay with buttons */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6 gap-3 z-20">
-                      {project.github && (
-                        <motion.a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <Github size={20} />
-                        </motion.a>
-                      )}
-                      {project.demo && (
-                        <motion.a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
-                          whileHover={{ scale: 1.1, rotate: -5 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <ExternalLink size={20} />
-                        </motion.a>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="p-6">
-                    <h3
-                      className={`text-2xl font-bold mb-3 text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
+                {/* Overlay with buttons */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6 gap-3 z-20">
+                  {project.github && (
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
                     >
-                      {project.title}
-                    </h3>
-                    <p className="text-neutral-400 leading-relaxed mb-4">
-                      {project.description}
-                    </p>
+                      <Github size={20} />
+                    </motion.a>
+                  )}
+                  {project.demo && (
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <ExternalLink size={20} />
+                    </motion.a>
+                  )}
+                </div>
+              </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, tagIdx) => (
-                        <span
-                          key={tagIdx}
-                          className={`px-3 py-1 text-xs font-medium bg-neutral-900 text-neutral-300 rounded-full border border-white/5 ${isRobotics ? "hover:border-blue-400/30" : "hover:border-neon-green/30"} transition-colors`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+              {/* Project Info */}
+              <div className="glass-card rounded-b-3xl p-6 border-t-0">
+                <h3
+                  className={`text-2xl font-bold mb-3 text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
+                >
+                  {project.title}
+                </h3>
+                <p className="text-neutral-400 leading-relaxed mb-4">
+                  {project.description}
+                </p>
 
-                    {/* View Project Link */}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 ${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold hover:gap-3 transition-all group/link`}
-                      >
-                        View Project
-                        <ArrowRight
-                          size={16}
-                          className="group-hover/link:translate-x-1 transition-transform"
-                        />
-                      </a>
-                    )}
-                  </div>
-                </SpotlightCard>
-              </motion.div>
-            ))}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, tagIdx) => (
+                    <span
+                      key={tagIdx}
+                      className={`px-3 py-1 text-xs font-medium bg-neutral-900 text-neutral-300 rounded-full border border-white/5 ${isRobotics ? "hover:border-blue-400/30" : "hover:border-neon-green/30"} transition-colors`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* View Project Link */}
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 ${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold hover:gap-3 transition-all group/link`}
+                  >
+                    View Project
+                    <ArrowRight
+                      size={16}
+                      className="group-hover/link:translate-x-1 transition-transform"
+                    />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* View All Projects CTA */}

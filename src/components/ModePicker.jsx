@@ -15,18 +15,6 @@ export function ModePicker() {
     }
   }, [mode]);
 
-  // Lock body scroll when ModePicker is visible
-  useEffect(() => {
-    if (!mode) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mode]);
-
   const scrollToCards = () => {
     cardsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -36,12 +24,12 @@ export function ModePicker() {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[100] overflow-y-auto"
+        className="relative z-[100]"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {/* Spline 3D Background - fixed behind everything */}
+        {/* Spline 3D Background - fixed so it stays visible while scrolling */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <iframe
             src="https://my.spline.design/zoomglasscopycopy-9WRVQRBTc0D5gaI7WRzdRx7q-o0v/"
@@ -52,7 +40,7 @@ export function ModePicker() {
           />
         </div>
 
-        {/* Section 1: Hero - full viewport height, transparent so Spline shows */}
+        {/* Section 1: Hero - full viewport, shows Spline behind */}
         <div className="relative z-10 h-screen flex flex-col items-center justify-end pb-16">
           <motion.button
             onClick={scrollToCards}
@@ -77,25 +65,23 @@ export function ModePicker() {
           </motion.button>
         </div>
 
-        {/* Section 2: Cards - full viewport height */}
+        {/* Section 2: Cards - full viewport */}
         <div
           ref={cardsRef}
-          className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-black/70 backdrop-blur-sm"
+          className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-16"
         >
           <div className="w-full max-w-5xl">
             {/* Header */}
             <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.p
                 className="text-lg md:text-xl text-neutral-400"
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 Choose which side of my work you'd like to explore
@@ -107,10 +93,9 @@ export function ModePicker() {
               {/* Dev Card */}
               <motion.button
                 onClick={() => setMode("dev")}
-                className="group relative flex-1 p-8 md:p-20 glass-card text-left hover:border-[#39ff14]/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
+                className="group relative flex-1 p-8 md:p-20 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.98 }}
@@ -129,11 +114,11 @@ export function ModePicker() {
                 )}
 
                 <div className="relative z-10">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#39ff14]/20 to-[#39ff14]/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Code2 className="w-8 h-8 text-[#39ff14]" />
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Code2 className="w-8 h-8 text-neon-green" />
                   </div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white group-hover:text-[#39ff14] transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white group-hover:text-neon-green transition-colors">
                     Developer
                   </h2>
 
@@ -153,7 +138,7 @@ export function ModePicker() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-2 text-[#39ff14] font-semibold">
+                  <div className="flex items-center gap-2 text-neon-green font-semibold">
                     Explore
                     <ArrowRight
                       size={18}
@@ -167,18 +152,17 @@ export function ModePicker() {
               <motion.div
                 className="relative flex items-center justify-center"
                 initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
                 <div className="md:hidden w-full h-px relative my-6">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#39ff14]/40 via-neutral-600/30 to-blue-400/40" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-neon-green/40 via-neutral-600/30 to-blue-400/40" />
                   <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
                     or
                   </div>
                 </div>
                 <div className="hidden md:block w-px h-full relative mx-6">
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#39ff14]/40 via-neutral-600/30 to-blue-400/40" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-neon-green/40 via-neutral-600/30 to-blue-400/40" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
                     or
                   </div>
@@ -190,8 +174,7 @@ export function ModePicker() {
                 onClick={() => setMode("robotics")}
                 className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-blue-400/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-l-none"
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
                 whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.98 }}
