@@ -6,10 +6,15 @@ import {
   Code2,
   Brain,
   Rocket,
+  CircuitBoard,
   GraduationCap,
 } from "lucide-react";
+import { useMode } from "../context/ModeContext";
 
 const About = () => {
+  const { mode } = useMode();
+  const isRobotics = mode === "robotics";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
@@ -27,7 +32,7 @@ const About = () => {
     },
   };
 
-  const skills = [
+  const devSkills = [
     {
       icon: <Code2 size={24} />,
       label: "Full Stack Development",
@@ -40,10 +45,30 @@ const About = () => {
     },
     {
       icon: <Rocket size={24} />,
-      label: "Robotics & IoT",
+      label: "Mobile Development",
       color: "from-orange-500 to-red-500",
     },
   ];
+
+  const roboticsSkills = [
+    {
+      icon: <CircuitBoard size={24} />,
+      label: "Embedded Systems",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: <Rocket size={24} />,
+      label: "Robotics & Sensors",
+      color: "from-green-500 to-emerald-500",
+    },
+    {
+      icon: <Brain size={24} />,
+      label: "Computer Vision",
+      color: "from-purple-500 to-pink-500",
+    },
+  ];
+
+  const skills = isRobotics ? roboticsSkills : devSkills;
 
   return (
     <section
@@ -51,8 +76,8 @@ const About = () => {
       className="section-padding relative overflow-hidden bg-gradient-to-b from-black via-neutral-950 to-black"
     >
       {/* Background decoration */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+      <div className={`absolute top-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
+      <div className={`absolute bottom-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -66,7 +91,7 @@ const About = () => {
           <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
             About <span className="gradient-text">Me</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-neon-green to-transparent mx-auto"></div>
+          <div className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto`}></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -86,11 +111,11 @@ const About = () => {
               <p className="text-lg text-neutral-300 leading-relaxed whitespace-pre-line">
                 I'm <span className="text-white font-semibold">Hemant</span>, a
                 Computer Science student pursuing my degree from{" "}
-                <span className="text-neon-green font-semibold">
+                <span className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}>
                   IIT Madras
                 </span>{" "}
                 and B.Tech from{" "}
-                <span className="text-neon-green font-semibold">
+                <span className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}>
                   Ajeenkya D.Y. Patil University
                 </span>{" "}
                 (2024-2028).
@@ -101,13 +126,21 @@ const About = () => {
               variants={fadeInUp}
               className="text-lg text-neutral-400 leading-relaxed"
             >
-              My expertise spans{" "}
-              <span className="text-white">
-                web development, robotics, and AI systems
-              </span>
-              . I've built autonomous robots, developed full-stack applications,
-              and explored the frontiers of machine learning. I'm passionate
-              about creating technology that makes a real impact.
+              {isRobotics ? (
+                <>
+                  I work at the intersection of{" "}
+                  <span className="text-white">hardware and software</span>
+                  , building mobile robots and embedded systems using microcontrollers and sensors. I've developed real-time computer vision pipelines with OpenCV and MediaPipe, and built dashboards to control and visualize robotics systems.
+                </>
+              ) : (
+                <>
+                  My expertise spans{" "}
+                  <span className="text-white">
+                    web development, AI systems, and mobile apps
+                  </span>
+                  . I build responsive web applications with React and modern JavaScript, develop AI-powered tools using RAG and generative AI, and create cross-platform mobile experiences.
+                </>
+              )}
             </motion.p>
 
             {/* Info Cards */}
