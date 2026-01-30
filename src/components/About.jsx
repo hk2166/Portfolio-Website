@@ -76,8 +76,12 @@ const About = () => {
       className="section-padding relative overflow-hidden bg-gradient-to-b from-black via-neutral-950 to-black"
     >
       {/* Background decoration */}
-      <div className={`absolute top-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
-      <div className={`absolute bottom-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
+      <div
+        className={`absolute top-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+      ></div>
+      <div
+        className={`absolute bottom-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+      ></div>
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -91,7 +95,9 @@ const About = () => {
           <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
             About <span className="gradient-text">Me</span>
           </h2>
-          <div className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto`}></div>
+          <div
+            className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto`}
+          ></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -111,11 +117,15 @@ const About = () => {
               <p className="text-lg text-neutral-300 leading-relaxed whitespace-pre-line">
                 I'm <span className="text-white font-semibold">Hemant</span>, a
                 Computer Science student pursuing my degree from{" "}
-                <span className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}>
+                <span
+                  className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}
+                >
                   IIT Madras
                 </span>{" "}
                 and B.Tech from{" "}
-                <span className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}>
+                <span
+                  className={`${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold`}
+                >
                   Ajeenkya D.Y. Patil University
                 </span>{" "}
                 (2024-2028).
@@ -129,8 +139,11 @@ const About = () => {
               {isRobotics ? (
                 <>
                   I work at the intersection of{" "}
-                  <span className="text-white">hardware and software</span>
-                  , building mobile robots and embedded systems using microcontrollers and sensors. I've developed real-time computer vision pipelines with OpenCV and MediaPipe, and built dashboards to control and visualize robotics systems.
+                  <span className="text-white">hardware and software</span>,
+                  building mobile robots and embedded systems using
+                  microcontrollers and sensors. I've developed real-time
+                  computer vision pipelines with OpenCV and MediaPipe, and built
+                  dashboards to control and visualize robotics systems.
                 </>
               ) : (
                 <>
@@ -138,7 +151,9 @@ const About = () => {
                   <span className="text-white">
                     web development, AI systems, and mobile apps
                   </span>
-                  . I build responsive web applications with React and modern JavaScript, develop AI-powered tools using RAG and generative AI, and create cross-platform mobile experiences.
+                  . I build responsive web applications with React and modern
+                  JavaScript, develop AI-powered tools using RAG and generative
+                  AI, and create cross-platform mobile experiences.
                 </>
               )}
             </motion.p>
@@ -176,13 +191,17 @@ const About = () => {
               variants={fadeInUp}
               className="flex flex-wrap gap-4 pt-6"
             >
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a
+                href={isRobotics ? "/Robotics_CV.pdf" : "/Dev_CV.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <motion.button
                   className="btn-primary inline-flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FileText size={20} /> Download Resume
+                  <FileText size={20} /> See My Resume
                 </motion.button>
               </a>
               <Link to="/contact">
@@ -238,8 +257,6 @@ const About = () => {
                 </div>
               </motion.div>
             ))}
-
-
           </motion.div>
         </div>
       </div>

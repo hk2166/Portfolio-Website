@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 import {
   Mail,
   Phone,
@@ -10,22 +11,53 @@ import {
   Sparkles,
   CheckCircle,
 } from "lucide-react";
+import { useMode } from "../context/ModeContext";
 import Footer from "./Footer";
 
 const Contact = () => {
+  const { mode } = useMode();
+  const isRobotics = mode === "robotics";
+  const form = useRef();
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Use environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables missing");
+      setError("Configuration error: Missing environment variables.");
+      return;
+    }
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setIsSubmitted(true);
+          setFormData({ user_name: "", user_email: "", message: "" });
+          setError(null);
+          setTimeout(() => setIsSubmitted(false), 5000);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setError("Failed to send message. Please try again later.");
+        },
+      );
   };
 
   const handleChange = (e) => {
@@ -39,8 +71,8 @@ const Contact = () => {
         className="section-padding relative overflow-hidden"
       >
         {/* Background decoration */}
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+        <div className={`absolute top-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
+        <div className={`absolute bottom-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
 
         <div className="container-custom relative z-10">
           {/* Section Header */}
@@ -51,7 +83,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-neon-green/20 text-neon-green text-sm font-semibold mb-6"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border ${isRobotics ? "border-blue-400/20 text-blue-400" : "border-neon-green/20 text-neon-green"} text-sm font-semibold mb-6`}
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -61,7 +93,7 @@ const Contact = () => {
             <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-neon-green to-transparent mx-auto mb-6"></div>
+            <div className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto mb-6`}></div>
             <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Have a project in mind or just want to say hi? I'd love to hear
               from you.
@@ -78,7 +110,7 @@ const Contact = () => {
             >
               <div className="p-8 glass-card">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <MessageSquare className="text-neon-green" size={28} />
+                  <MessageSquare className={isRobotics ? "text-blue-400" : "text-neon-green"} size={28} />
                   Let's Connect
                 </h3>
                 <p className="text-neutral-400 mb-8 leading-relaxed">
@@ -118,7 +150,7 @@ const Contact = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + idx * 0.1 }}
                       whileHover={{ x: 10, scale: 1.02 }}
-                      className="flex items-center gap-4 p-5 glass-card hover:border-neon-green/30 transition-all group cursor-pointer"
+                      className={`flex items-center gap-4 p-5 glass-card ${isRobotics ? "hover:border-blue-400/30" : "hover:border-neon-green/30"} transition-all group cursor-pointer`}
                     >
                       <div
                         className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} bg-opacity-10 text-white group-hover:scale-110 transition-transform`}
@@ -129,7 +161,7 @@ const Contact = () => {
                         <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
                           {item.title}
                         </p>
-                        <p className="text-base font-semibold text-white group-hover:text-neon-green transition-colors">
+                        <p className={`text-base font-semibold text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}>
                           {item.value}
                         </p>
                       </div>
@@ -143,7 +175,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="p-8 glass-card relative overflow-hidden group hover:border-neon-green/30 transition-all"
+                className={`p-8 glass-card relative overflow-hidden group ${isRobotics ? "hover:border-blue-400/30" : "hover:border-neon-green/30"} transition-all`}
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                   <Sparkles size={100} />
@@ -165,45 +197,48 @@ const Contact = () => {
             >
               <div className="p-8 glass-card">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <Send className="text-neon-green" size={28} />
+                  <Send className={isRobotics ? "text-blue-400" : "text-neon-green"} size={28} />
                   Send a Message
                 </h3>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                  {/* Hidden field for recipient email */}
+                  <input type="hidden" name="to_email" value="9610hemant@gmail.com" />
+                  
                   <div>
                     <label
-                      htmlFor="name"
+                      htmlFor="user_name"
                       className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
                     >
                       <User size={16} /> Your Name
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="user_name"
+                      name="user_name"
+                      value={formData.user_name}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all"
+                      className={`w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none ${isRobotics ? "focus:border-blue-400/50 focus:ring-blue-400/20" : "focus:border-neon-green/50 focus:ring-neon-green/20"} focus:ring-2 transition-all`}
                       placeholder="John Doe"
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="user_email"
                       className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
                     >
                       <Mail size={16} /> Your Email
                     </label>
                     <input
                       type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      id="user_email"
+                      name="user_email"
+                      value={formData.user_email}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all"
+                      className={`w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none ${isRobotics ? "focus:border-blue-400/50 focus:ring-blue-400/20" : "focus:border-neon-green/50 focus:ring-neon-green/20"} focus:ring-2 transition-all`}
                       placeholder="john@example.com"
                     />
                   </div>
@@ -222,14 +257,18 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none focus:border-neon-green/50 focus:ring-2 focus:ring-neon-green/20 transition-all resize-none"
+                      className={`w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none ${isRobotics ? "focus:border-blue-400/50 focus:ring-blue-400/20" : "focus:border-neon-green/50 focus:ring-neon-green/20"} focus:ring-2 transition-all resize-none`}
                       placeholder="Tell me about your project..."
                     />
                   </div>
+                  
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
 
                   <motion.button
                     type="submit"
-                    className="w-full btn-primary inline-flex items-center justify-center gap-2 relative overflow-hidden"
+                    className={`w-full ${isRobotics ? "bg-blue-500 hover:bg-blue-400 text-black" : "btn-primary"} font-bold py-4 rounded-xl inline-flex items-center justify-center gap-2 relative overflow-hidden transition-all`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={isSubmitted}

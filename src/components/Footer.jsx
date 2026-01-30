@@ -10,7 +10,12 @@ import {
   ArrowUp,
 } from "lucide-react";
 
+import { useMode } from "../context/ModeContext";
+
 const Footer = () => {
+  const { mode } = useMode();
+  const isRobotics = mode === "robotics";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -38,7 +43,9 @@ const Footer = () => {
       icon: <Mail size={20} />,
       href: "mailto:9610hemant@gmail.com",
       label: "Email",
-      color: "hover:bg-neon-green hover:text-black",
+      color: isRobotics
+        ? "hover:bg-blue-400 hover:text-black"
+        : "hover:bg-neon-green hover:text-black",
     },
   ];
 
@@ -47,7 +54,9 @@ const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-b from-black via-neutral-950 to-black pt-20 pb-10 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+      <div
+        className={`absolute top-0 left-1/4 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+      ></div>
 
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
@@ -63,9 +72,9 @@ const Footer = () => {
               HEMANT
             </motion.h2>
             <p className="text-neutral-400 max-w-md leading-relaxed">
-              A passionate developer and tech enthusiast specializing in
-              robotics, AI, and web development. Building innovative solutions
-              that bridge hardware and software.
+              {isRobotics
+                ? "A passionate robotics engineer specialized in autonomous systems, embedded control, and hardware-software integration."
+                : "A passionate developer and tech enthusiast specializing in full-stack development, AI systems, and modern web experiences."}
             </p>
 
             {/* Social Links */}
