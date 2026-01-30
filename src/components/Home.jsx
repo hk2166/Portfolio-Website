@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "./Hero";
-import Services from "./Services";
+import KeyboardSkills from "./KeyboardSkills";
 import Stats from "./Stats";
 import About from "./About";
 import Projects from "./Projects";
@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Services />
+      <KeyboardSkills />
       <Stats />
       <About />
       <Projects />
