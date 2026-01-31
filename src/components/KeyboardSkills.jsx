@@ -354,7 +354,7 @@ const icons = {
     <img
       src="https://cdn.prod.website-files.com/66a37d395dfadcdb65dcdf45/66df897f59bcd188d3914932_hero.webp"
       alt="ROS"
-      className="w-10 h-10 object-contain"
+      className="w-10 h-10 object-contain pointer-events-auto cursor-pointer"
     />
   ),
   gazebo: (
