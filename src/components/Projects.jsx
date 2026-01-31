@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { useMode } from "../context/ModeContext";
-import SpotlightCard from './SpotlightCard';
-  
-
+import SpotlightCard from "./SpotlightCard";
 
 const devProjects = [
   {
@@ -11,10 +9,10 @@ const devProjects = [
     title: "DocuMind - RAG Document AI",
     description:
       "Retrieval-Augmented Generation system to summarize and interactively query PDF documents using FAISS vector search and Google Gemini.",
-    image: "/sahayak.jpeg",
+    image: "/rag.jpeg",
     tags: ["Python", "FastAPI", "Streamlit", "FAISS", "Gemini"],
     github: "https://github.com/hk2166/DocuMind",
-    demo: "#",
+    demo: "https://pdfsummarizer-rag.streamlit.app/",
     gradient: "from-blue-500/20 to-purple-500/20",
   },
   {
@@ -22,7 +20,7 @@ const devProjects = [
     title: "Sahayak - AI Teaching Assistant",
     description:
       "AI-driven teaching assistant for multi-grade, low-resource classrooms with speech assessment, multilingual chatbot, quizzes, and visual aids.",
-    image: "/project-3.jpeg",
+    image: "/sahayak.jpeg",
     tags: ["React", "AI/ML", "Speech Recognition"],
     github: "https://github.com/hk2166/Sahayak",
     demo: "https://sahayak-hazel.vercel.app/",
@@ -55,7 +53,7 @@ const devProjects = [
     title: "VB Safety Nets",
     description:
       "Professional business website with SEO optimization and modern web development best practices.",
-    image: "/project-2.jpeg",
+    image: "/vb.jpeg",
     tags: ["HTML", "CSS", "JS", "React", "SEO"],
     github: "https://github.com/hk2166/VBSafetyNets",
     demo: "#",
@@ -66,10 +64,10 @@ const devProjects = [
     title: "PyHandControl",
     description:
       "Gesture-controlled game interface using computer vision. Combo gestures like Pinky+Ring enable complex moves like 'Jump Right'.",
-    image: "/project-4.jpeg",
+    image: "/hand.jpeg",
     tags: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
     github: "https://github.com/hk2166/PyHandControl",
-    demo: "#",
+    demo: "https://drive.google.com/file/d/1-znoQ_rykDA7k5LB3AgUC5Xs6MCQNl3q/view?usp=sharing",
     gradient: "from-indigo-500/20 to-violet-500/20",
   },
 ];
@@ -80,9 +78,9 @@ const roboticsProjects = [
     title: "RoboSoccer Bot",
     description:
       "Led the technical team in designing a competitive robotic soccer system with motion control, sensor integration, and real-time decision logic.",
-    image: "/project-1.jpeg",
+    image: "/robo.jpeg",
     tags: ["Microcontrollers", "Sensors", "Embedded Control"],
-    demo: "#",
+    demo: "https://drive.google.com/file/d/1NK5xYxm7iebBu6xZ40DMYiiU0dPcTkvx/view?usp=sharing",
     gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
@@ -90,9 +88,9 @@ const roboticsProjects = [
     title: "Pick-and-Grab Robot",
     description:
       "Mobile robot capable of object pickup and placement with coordinated motion control, grasping logic, and real-time performance tuning.",
-    image: "/project-2.jpeg",
+    image: "/pickngrab.jpeg",
     tags: ["Microcontroller", "Motors", "Gripper", "Sensors"],
-    demo: "#",
+    demo: "https://drive.google.com/drive/folders/1dIINwuAqmY1hnmjVZA0NzMQFIOJzbs9Y?usp=drive_link",
     gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
@@ -100,21 +98,21 @@ const roboticsProjects = [
     title: "Wireless RF Experimentation System",
     description:
       "Experimented with wireless communication reliability, packet loss analysis, signal overlap, and protocol behavior using ESP32 and NRF24L01.",
-    image: "/project-3.jpeg",
+    image: "/jam.jpeg",
     tags: ["ESP32", "NRF24L01", "RF", "Embedded"],
-    demo: "#",
+    demo: "https://drive.google.com/file/d/19OOxqK_zkmUpfMP-HH-tpK_bj3w6TVO6/view?usp=drive_link",
     gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
     id: 4,
     title: "PyHandControl",
     description:
-      "Gesture-controlled game interface built with OpenCV and MediaPipe. Combo gestures enable complex moves — bridging computer vision with hardware interaction.",
-    image: "/project-4.jpeg",
+      "Gesture-controlled game interface using computer vision. Combo gestures like Pinky+Ring enable complex moves like 'Jump Right'.",
+    image: "/hand.jpeg",
     tags: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
     github: "https://github.com/hk2166/PyHandControl",
-    demo: "#",
-    gradient: "from-orange-500/20 to-red-500/20",
+    demo: "https://drive.google.com/file/d/1-znoQ_rykDA7k5LB3AgUC5Xs6MCQNl3q/view?usp=sharing",
+    gradient: "from-indigo-500/20 to-violet-500/20",
   },
 ];
 

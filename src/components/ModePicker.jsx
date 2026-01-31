@@ -110,6 +110,7 @@ export function ModePicker() {
                   <div className="absolute inset-0 z-0 opacity-40 animate-fade-in group-hover:opacity-70 transition-opacity duration-700">
                     <spline-viewer
                       url="https://prod.spline.design/pIES2o0DsQ9jJMlD/scene.splinecode"
+                      loading-anim-type="none"
                       style={{
                         width: "100%",
                         height: "100%",
@@ -191,6 +192,7 @@ export function ModePicker() {
                   <div className="absolute inset-0 z-0 opacity-40 animate-fade-in group-hover:opacity-70 transition-opacity duration-700">
                     <spline-viewer
                       url="https://prod.spline.design/T5g-jjNSVOMpcKmN/scene.splinecode"
+                      loading-anim-type="none"
                       style={{
                         width: "100%",
                         height: "100%",

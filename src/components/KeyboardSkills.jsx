@@ -61,13 +61,7 @@ const devSkillsData = [
       textColor: "#000",
       icon: "reactnative",
     },
-    {
-      id: "expo",
-      label: "Ex",
-      color: "#000020",
-      textColor: "#fff",
-      icon: "expo",
-    },
+    
   ],
   // Row 3
   [
@@ -137,6 +131,13 @@ const devSkillsData = [
       textColor: "#fff",
       icon: "figma",
     },
+    {
+      id: "expo",
+      label: "Ex",
+      color: "#000020",
+      textColor: "#fff",
+      icon: "expo",
+    },
   ],
 ];
 
@@ -150,13 +151,6 @@ const roboticsSkillsData = [
       color: "#3776AB",
       textColor: "#FFD43B",
       icon: "python",
-    },
-    {
-      id: "ros2",
-      label: "ROS2",
-      color: "#22314E",
-      textColor: "#fff",
-      icon: "ros",
     },
     {
       id: "opencv",
@@ -354,7 +348,7 @@ const icons = {
     <img
       src="https://cdn.prod.website-files.com/66a37d395dfadcdb65dcdf45/66df897f59bcd188d3914932_hero.webp"
       alt="ROS"
-      className="w-10 h-10 object-contain pointer-events-auto cursor-pointer"
+      className="w-10 h-10 object-contain"
     />
   ),
   gazebo: (
