@@ -1,9 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
 import {
   Mail,
-  Phone,
   MapPin,
   Send,
   MessageSquare,
@@ -17,47 +15,42 @@ import Footer from "./Footer";
 const Contact = () => {
   const { mode } = useMode();
   const isRobotics = mode === "robotics";
-  const form = useRef();
 
   const [formData, setFormData] = useState({
-    user_name: "",
-    user_email: "",
+    name: "",
+    email: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    
-    // Use environment variables
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const onSubmit = async (event) => {
+    event.preventDefault();
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS environment variables missing");
-      setError("Configuration error: Missing environment variables.");
-      return;
+    const formDataObj = new FormData(event.target);
+    formDataObj.append("access_key", import.meta.env.VITE_ACCESS_KEY);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setError(null);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        console.error("Form submission failed:", data);
+        setError("Failed to send message: " + data.message);
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Failed to send message. Please try again later.");
     }
-
-    emailjs
-      .sendForm(serviceId, templateId, form.current, {
-        publicKey: publicKey,
-      })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setIsSubmitted(true);
-          setFormData({ user_name: "", user_email: "", message: "" });
-          setError(null);
-          setTimeout(() => setIsSubmitted(false), 5000);
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          setError("Failed to send message. Please try again later.");
-        },
-      );
   };
 
   const handleChange = (e) => {
@@ -71,8 +64,12 @@ const Contact = () => {
         className="section-padding relative overflow-hidden"
       >
         {/* Background decoration */}
-        <div className={`absolute top-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
-        <div className={`absolute bottom-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}></div>
+        <div
+          className={`absolute top-1/4 right-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+        ></div>
+        <div
+          className={`absolute bottom-1/4 left-0 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+        ></div>
 
         <div className="container-custom relative z-10">
           {/* Section Header */}
@@ -93,7 +90,9 @@ const Contact = () => {
             <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <div className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto mb-6`}></div>
+            <div
+              className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto mb-6`}
+            ></div>
             <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Have a project in mind or just want to say hi? I'd love to hear
               from you.
@@ -110,7 +109,10 @@ const Contact = () => {
             >
               <div className="p-8 glass-card">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <MessageSquare className={isRobotics ? "text-blue-400" : "text-neon-green"} size={28} />
+                  <MessageSquare
+                    className={isRobotics ? "text-blue-400" : "text-neon-green"}
+                    size={28}
+                  />
                   Let's Connect
                 </h3>
                 <p className="text-neutral-400 mb-8 leading-relaxed">
@@ -128,13 +130,7 @@ const Contact = () => {
                       href: "mailto:9610hemant@gmail.com",
                       gradient: "from-blue-500 to-cyan-500",
                     },
-                    {
-                      icon: <Phone size={20} />,
-                      title: "Phone",
-                      value: "+91 9610769080",
-                      href: "tel:+919610769080",
-                      gradient: "from-green-500 to-emerald-500",
-                    },
+
                     {
                       icon: <MapPin size={20} />,
                       title: "Location",
@@ -161,7 +157,9 @@ const Contact = () => {
                         <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
                           {item.title}
                         </p>
-                        <p className={`text-base font-semibold text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}>
+                        <p
+                          className={`text-base font-semibold text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
+                        >
                           {item.value}
                         </p>
                       </div>
@@ -197,26 +195,26 @@ const Contact = () => {
             >
               <div className="p-8 glass-card">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <Send className={isRobotics ? "text-blue-400" : "text-neon-green"} size={28} />
+                  <Send
+                    className={isRobotics ? "text-blue-400" : "text-neon-green"}
+                    size={28}
+                  />
                   Send a Message
                 </h3>
 
-                <form ref={form} onSubmit={sendEmail} className="space-y-6">
-                  {/* Hidden field for recipient email */}
-                  <input type="hidden" name="to_email" value="9610hemant@gmail.com" />
-                  
+                <form onSubmit={onSubmit} className="space-y-6">
                   <div>
                     <label
-                      htmlFor="user_name"
+                      htmlFor="name"
                       className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
                     >
                       <User size={16} /> Your Name
                     </label>
                     <input
                       type="text"
-                      id="user_name"
-                      name="user_name"
-                      value={formData.user_name}
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       required
                       className={`w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none ${isRobotics ? "focus:border-blue-400/50 focus:ring-blue-400/20" : "focus:border-neon-green/50 focus:ring-neon-green/20"} focus:ring-2 transition-all`}
@@ -226,16 +224,16 @@ const Contact = () => {
 
                   <div>
                     <label
-                      htmlFor="user_email"
+                      htmlFor="email"
                       className="block text-sm font-medium text-neutral-400 mb-2 flex items-center gap-2"
                     >
                       <Mail size={16} /> Your Email
                     </label>
                     <input
                       type="email"
-                      id="user_email"
-                      name="user_email"
-                      value={formData.user_email}
+                      id="email"
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
                       required
                       className={`w-full px-6 py-4 bg-neutral-900/50 border border-white/5 rounded-2xl text-white placeholder-neutral-600 focus:outline-none ${isRobotics ? "focus:border-blue-400/50 focus:ring-blue-400/20" : "focus:border-neon-green/50 focus:ring-neon-green/20"} focus:ring-2 transition-all`}
@@ -261,10 +259,8 @@ const Contact = () => {
                       placeholder="Tell me about your project..."
                     />
                   </div>
-                  
-                  {error && (
-                    <p className="text-red-500 text-sm">{error}</p>
-                  )}
+
+                  {error && <p className="text-red-500 text-sm">{error}</p>}
 
                   <motion.button
                     type="submit"
