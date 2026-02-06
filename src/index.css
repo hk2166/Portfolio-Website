@@ -202,3 +202,16 @@
     opacity: 0.5;
   }
 }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out forwards;
+}
