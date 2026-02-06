@@ -28,9 +28,9 @@ export function SplineBackground() {
       {mounted && (
         <motion.div
           key={mode}
-          className="fixed inset-0 z-0 pointer-events-none"
+          className="fixed inset-0 z-0"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.25 }}
+          animate={{ opacity: 0.5 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5 }}
         >
@@ -42,8 +42,8 @@ export function SplineBackground() {
               display: "block",
             }}
           />
-          {/* Overlay to darken and tint */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          {/* Overlay to darken and tint - pointer-events-none so clicks pass through to content above */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 pointer-events-none" />
         </motion.div>
       )}
     </AnimatePresence>
