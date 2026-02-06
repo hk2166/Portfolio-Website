@@ -33,8 +33,7 @@ const ScrollTop = () => {
 
   return (
     <div
-      className="scroll-top"
-      style={{ display: isVisible ? "flex" : "none" }}
+      className={`fixed bottom-6 right-6 z-50 w-12 h-12 items-center justify-center rounded-full bg-neutral-800 border border-white/10 text-white cursor-pointer hover:bg-neon-green hover:text-black transition-all ${isVisible ? "flex" : "hidden"}`}
       onClick={scrollToTop}
     >
       <svg
@@ -42,6 +41,7 @@ const ScrollTop = () => {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        className="w-5 h-5"
       >
         <path
           strokeLinecap="round"
