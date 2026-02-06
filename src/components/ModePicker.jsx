@@ -36,7 +36,7 @@ export function ModePicker() {
 
           </div>
 
-          <div className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-60 pb-16">
+          <div className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-[85vh] pb-16">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
