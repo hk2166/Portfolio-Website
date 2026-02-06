@@ -21,7 +21,7 @@ export function ModePicker() {
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow" />
         </div>
 
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-6">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -47,16 +47,16 @@ export function ModePicker() {
             </motion.p>
           </motion.div>
 
-          {/* Mode Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Mode Cards with Divider */}
+          <div className="flex flex-col md:flex-row items-stretch gap-0">
             {/* Dev Card */}
             <motion.button
               onClick={() => setMode("dev")}
-              className="group relative p-8 md:p-10 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden"
+              className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-neon-green/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-r-none"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              whileHover={{ scale: 1.03, y: -5 }}
+              whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -97,18 +97,54 @@ export function ModePicker() {
               </div>
             </motion.button>
 
-            {/* Robotics Card */}
+            {/* Vertical Divider (desktop) / Horizontal Divider (mobile) */}
+            <motion.div
+              className="relative flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              {/* Mobile horizontal line */}
+              <div className="md:hidden w-full h-px relative my-6">
+                <div className="absolute inset-0 bg-gradient-to-r from-neon-green/60 via-white/30 to-blue-400/60" />
+                <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 bg-black px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
+                  or
+                </div>
+              </div>
+              {/* Desktop vertical line */}
+              <div className="hidden md:block w-px h-full relative mx-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-neon-green/60 via-white/30 to-blue-400/60" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
+                  or
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Robotics Card with Spline background */}
             <motion.button
               onClick={() => setMode("robotics")}
-              className="group relative p-8 md:p-10 glass-card text-left hover:border-blue-400/40 transition-all duration-500 cursor-pointer overflow-hidden"
+              className="group relative flex-1 p-8 md:p-10 glass-card text-left hover:border-blue-400/40 transition-all duration-500 cursor-pointer overflow-hidden md:rounded-l-none"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              whileHover={{ scale: 1.03, y: -5 }}
+              whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Spline 3D Background */}
+              <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
+                <spline-viewer
+                  url="https://prod.spline.design/T5g-jjNSVOMpcKmN/scene.splinecode"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "block",
+                  }}
+                />
+              </div>
+
+              {/* Overlay gradient to keep text readable */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-blue-900/30 z-[1]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1]" />
 
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -119,7 +155,7 @@ export function ModePicker() {
                   Robotics
                 </h2>
 
-                <p className="text-neutral-400 leading-relaxed mb-6 group-hover:text-neutral-300 transition-colors">
+                <p className="text-neutral-300 leading-relaxed mb-6 group-hover:text-neutral-200 transition-colors">
                   Autonomous systems, IoT projects, Arduino builds, and
                   hardware-software integration.
                 </p>
@@ -128,7 +164,7 @@ export function ModePicker() {
                   {["Arduino", "IoT", "Sensors", "Autonomous"].map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-medium bg-neutral-900 text-neutral-300 rounded-full border border-white/5"
+                      className="px-3 py-1 text-xs font-medium bg-black/60 text-neutral-300 rounded-full border border-white/10 backdrop-blur-sm"
                     >
                       {tag}
                     </span>
