@@ -81,14 +81,10 @@ export function ModePicker() {
                     </div>
                   )}
 
-                  {/* Overlay gradient to keep text readable */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-green-900/30 z-[1] pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1] pointer-events-none" />
-
-                <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Code2 className="w-8 h-8 text-neon-green" />
-                </div>
+                  <div className="relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Code2 className="w-8 h-8 text-neon-green" />
+                  </div>
 
                 <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white group-hover:text-neon-green transition-colors">
                   Developer
@@ -127,20 +123,20 @@ export function ModePicker() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              {/* Mobile horizontal line */}
-              <div className="md:hidden w-full h-px relative my-6">
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-green/60 via-white/30 to-blue-400/60" />
-                  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
-                  or
+                {/* Mobile horizontal line */}
+                <div className="md:hidden w-full h-px relative my-6">
+                  <div className="absolute inset-0 bg-gradient-to-r from-neon-green/40 via-neutral-600/30 to-blue-400/40" />
+                    <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
+                    or
+                  </div>
                 </div>
-              </div>
-              {/* Desktop vertical line */}
-              <div className="hidden md:block w-px h-full relative mx-6">
-                <div className="absolute inset-0 bg-gradient-to-b from-neon-green/60 via-white/30 to-blue-400/60" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
-                  or
+                {/* Desktop vertical line */}
+                <div className="hidden md:block w-px h-full relative mx-6">
+                  <div className="absolute inset-0 bg-gradient-to-b from-neon-green/40 via-neutral-600/30 to-blue-400/40" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
+                    or
+                  </div>
                 </div>
-              </div>
             </motion.div>
 
             {/* Robotics Card with Spline background */}
@@ -167,11 +163,7 @@ export function ModePicker() {
                     </div>
                   )}
 
-                {/* Overlay gradient to keep text readable */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-blue-900/30 z-[1] pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[1] pointer-events-none" />
-
-              <div className="relative z-10">
+                <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Cpu className="w-8 h-8 text-blue-400" />
                 </div>
