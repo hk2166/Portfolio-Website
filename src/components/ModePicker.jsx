@@ -23,12 +23,19 @@ export function ModePicker() {
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
-      >
-        {/* Background effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl animate-pulse-slow" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow" />
-        </div>
+        >
+          {/* Spline 3D Name Background */}
+          <div className="absolute inset-0 z-0">
+            <iframe
+              src="https://my.spline.design/zoomglasscopycopy-9WRVQRBTc0D5gaI7WRzdRx7q-o0v/"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", inset: 0 }}
+            />
+            {/* Overlay to keep content readable */}
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
 
         <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
           {/* Header */}
