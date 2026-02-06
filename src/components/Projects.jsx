@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { useMode } from "../context/ModeContext";
 
-const projectsData = [
+const devProjects = [
   {
     id: 1,
     title: "Sahayak - AI Teaching Assistant",
@@ -46,7 +47,50 @@ const projectsData = [
   },
 ];
 
+const roboticsProjects = [
+  {
+    id: 1,
+    title: "Maze-Solving Robot",
+    description:
+      "Autonomous robot using ultrasonic sensors and custom path-finding algorithms to navigate and solve complex mazes in real-time.",
+    image: "/sahayak.jpeg",
+    tags: ["Arduino", "Ultrasonic", "C++", "Algorithms"],
+    gradient: "from-blue-500/20 to-cyan-500/20",
+  },
+  {
+    id: 2,
+    title: "IoT Weather Station",
+    description:
+      "Connected weather monitoring system with multiple environmental sensors, wireless data transmission, and a live web dashboard.",
+    image: "/project-3.jpeg",
+    tags: ["ESP32", "IoT", "Sensors", "Dashboard"],
+    gradient: "from-green-500/20 to-emerald-500/20",
+  },
+  {
+    id: 3,
+    title: "Line Following Bot",
+    description:
+      "IR sensor-based line following robot with PID control for smooth tracking and speed optimization on various track layouts.",
+    image: "/Fintrack.jpeg",
+    tags: ["Arduino", "IR Sensors", "PID", "Motors"],
+    gradient: "from-purple-500/20 to-pink-500/20",
+  },
+  {
+    id: 4,
+    title: "Robotic Arm Controller",
+    description:
+      "Multi-axis robotic arm with servo motors controlled via custom interface. Includes programmable motion sequences and manual override.",
+    image: "/Splitbuddy.jpeg",
+    tags: ["Servos", "Arduino", "3D Print", "Control"],
+    gradient: "from-orange-500/20 to-red-500/20",
+  },
+];
+
 const Projects = () => {
+  const { mode } = useMode();
+  const isRobotics = mode === "robotics";
+  const projectsData = isRobotics ? roboticsProjects : devProjects;
+
   const containerVariants = {
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
@@ -70,7 +114,9 @@ const Projects = () => {
       className="section-padding relative overflow-hidden bg-black"
     >
       {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl"></div>
+      <div
+        className={`absolute top-0 left-1/4 w-96 h-96 ${isRobotics ? "bg-blue-500/5" : "bg-neon-green/5"} rounded-full blur-3xl`}
+      ></div>
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -84,10 +130,13 @@ const Projects = () => {
           <h2 className="text-5xl md:text-7xl font-extrabold mb-6">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-neon-green to-transparent mx-auto mb-6"></div>
+          <div
+            className={`w-24 h-1.5 bg-gradient-to-r from-transparent ${isRobotics ? "via-blue-400" : "via-neon-green"} to-transparent mx-auto mb-6`}
+          ></div>
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
-            A curated selection of my recent work in web development, AI, and
-            mobile applications
+            {isRobotics
+              ? "A showcase of my robotics builds, autonomous systems, and hardware projects"
+              : "A curated selection of my recent work in web development, AI, and mobile applications"}
           </p>
         </motion.div>
 
@@ -99,7 +148,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
-          {projectsData.map((project, idx) => (
+          {projectsData.map((project) => (
             <motion.div
               key={project.id}
               variants={cardVariants}
@@ -124,7 +173,7 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 glass-card rounded-full text-white hover:text-neon-green hover:border-neon-green/50 transition-colors"
+                      className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -136,7 +185,7 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 glass-card rounded-full text-white hover:text-neon-green hover:border-neon-green/50 transition-colors"
+                      className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
                       whileHover={{ scale: 1.1, rotate: -5 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -148,7 +197,9 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="glass-card rounded-b-3xl p-6 border-t-0">
-                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-neon-green transition-colors">
+                <h3
+                  className={`text-2xl font-bold mb-3 text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
+                >
                   {project.title}
                 </h3>
                 <p className="text-neutral-400 leading-relaxed mb-4">
@@ -160,7 +211,7 @@ const Projects = () => {
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
-                      className="px-3 py-1 text-xs font-medium bg-neutral-900 text-neutral-300 rounded-full border border-white/5 hover:border-neon-green/30 transition-colors"
+                      className={`px-3 py-1 text-xs font-medium bg-neutral-900 text-neutral-300 rounded-full border border-white/5 ${isRobotics ? "hover:border-blue-400/30" : "hover:border-neon-green/30"} transition-colors`}
                     >
                       {tag}
                     </span>
@@ -173,7 +224,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-neon-green font-semibold hover:gap-3 transition-all group/link"
+                    className={`inline-flex items-center gap-2 ${isRobotics ? "text-blue-400" : "text-neon-green"} font-semibold hover:gap-3 transition-all group/link`}
                   >
                     View Project
                     <ArrowRight

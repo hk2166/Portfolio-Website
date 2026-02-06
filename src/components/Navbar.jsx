@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code2, Cpu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMode } from "../context/ModeContext";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { mode, setMode } = useMode();
+
+  const isRobotics = mode === "robotics";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +39,12 @@ export function Navbar() {
     { name: "Projects", to: "/#projects" },
     { name: "Contact", to: "/contact" },
   ];
+
+  const toggleMode = () => {
+    setMode(isRobotics ? "dev" : "robotics");
+  };
+
+  if (!mode) return null;
 
   return (
     <motion.nav
@@ -72,7 +82,9 @@ export function Navbar() {
                   className="relative px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-neon-green transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                  <span
+                    className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isRobotics ? "bg-blue-400" : "bg-neon-green"} transition-all duration-300 group-hover:w-full group-hover:left-0`}
+                  ></span>
                 </a>
               ) : (
                 <Link
@@ -80,17 +92,44 @@ export function Navbar() {
                   className="relative px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-neon-green transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                  <span
+                    className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isRobotics ? "bg-blue-400" : "bg-neon-green"} transition-all duration-300 group-hover:w-full group-hover:left-0`}
+                  ></span>
                 </Link>
               )}
             </motion.div>
           ))}
         </div>
 
-        <div className="hidden md:block">
+        {/* Right side: Mode Toggle + Let's Talk */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Mode Toggle */}
+          <motion.button
+            onClick={toggleMode}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all border ${
+              isRobotics
+                ? "border-blue-400/30 text-blue-400 hover:bg-blue-400/10"
+                : "border-neon-green/30 text-neon-green hover:bg-neon-green/10"
+            } glass-card`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isRobotics ? (
+              <>
+                <Code2 size={16} />
+                Switch to Dev
+              </>
+            ) : (
+              <>
+                <Cpu size={16} />
+                Switch to Robotics
+              </>
+            )}
+          </motion.button>
+
           <Link to="/contact">
             <motion.button
-              className="btn-primary"
+              className={isRobotics ? "bg-blue-500 text-black font-bold px-8 py-4 rounded-full transition-all hover:bg-blue-400" : "btn-primary"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -102,7 +141,7 @@ export function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-white hover:text-neon-green transition-colors"
+          className={`md:hidden p-2 text-white ${isRobotics ? "hover:text-blue-400" : "hover:text-neon-green"} transition-colors`}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -139,8 +178,36 @@ export function Navbar() {
                   </Link>
                 ),
               )}
+
+              {/* Mobile Mode Toggle */}
+              <button
+                onClick={() => {
+                  toggleMode();
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`flex items-center gap-2 py-2 text-lg font-medium transition-colors ${
+                  isRobotics ? "text-blue-400" : "text-neon-green"
+                }`}
+              >
+                {isRobotics ? (
+                  <>
+                    <Code2 size={20} />
+                    Switch to Dev
+                  </>
+                ) : (
+                  <>
+                    <Cpu size={20} />
+                    Switch to Robotics
+                  </>
+                )}
+              </button>
+
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <button className="w-full btn-primary mt-4">Let's Talk</button>
+                <button
+                  className={`w-full mt-4 ${isRobotics ? "bg-blue-500 text-black font-bold px-8 py-4 rounded-full" : "btn-primary"}`}
+                >
+                  Let's Talk
+                </button>
               </Link>
             </div>
           </motion.div>
