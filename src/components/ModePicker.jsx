@@ -19,7 +19,7 @@ export function ModePicker() {
   return (
     <AnimatePresence>
         <motion.div
-          className="fixed inset-0 z-[100] bg-black overflow-y-auto"
+          className="fixed inset-0 z-[100] overflow-y-auto"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,8 +33,7 @@ export function ModePicker() {
               height="100%"
               style={{ position: "absolute", inset: 0 }}
             />
-            {/* Overlay to keep content readable */}
-            <div className="absolute inset-0 bg-black/50" />
+
           </div>
 
           <div className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-60 pb-16">
@@ -131,14 +130,14 @@ export function ModePicker() {
               {/* Mobile horizontal line */}
               <div className="md:hidden w-full h-px relative my-6">
                 <div className="absolute inset-0 bg-gradient-to-r from-neon-green/60 via-white/30 to-blue-400/60" />
-                <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 bg-black px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
+                  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 px-3 py-1 text-xs font-bold text-neutral-500 uppercase tracking-widest">
                   or
                 </div>
               </div>
               {/* Desktop vertical line */}
               <div className="hidden md:block w-px h-full relative mx-6">
                 <div className="absolute inset-0 bg-gradient-to-b from-neon-green/60 via-white/30 to-blue-400/60" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-3 text-xs font-bold text-neutral-500 uppercase tracking-widest [writing-mode:vertical-lr]">
                   or
                 </div>
               </div>
