@@ -1,108 +1,151 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export function Navbar({ darkMode, toggleDarkMode }) {
+export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      setIsScrolled(currentScrollY > 20);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const navLinks = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/#about' },
-    { name: 'Services', to: '/#services' },
-    { name: 'Projects', to: '/#projects' },
-    { name: 'Contact', to: '/contact' },
+    { name: "Home", to: "/#hero" },
+    { name: "About", to: "/#about" },
+    { name: "Skills", to: "/#services" },
+    { name: "Projects", to: "/#projects" },
+    { name: "Contact", to: "/contact" },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-morphism py-3 shadow-lg' : 'bg-transparent py-5'}`}>
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ y: isHidden ? -100 : 0 }}
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "glass-nav py-3" : "bg-transparent py-5"
+      }`}
+    >
       <div className="container-custom flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold gradient-text">
-          HEMANT
+        {/* Logo */}
+        <Link to="/" className="relative z-10">
+          <motion.h1
+            className="text-2xl md:text-3xl font-bold gradient-text"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            HEMANT
+          </motion.h1>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            link.to.startsWith('/#') ? (
-              <a
-                key={link.name}
-                href={link.to}
-                className="text-sm font-medium hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link
-                key={link.name}
-                to={link.to}
-                className="text-sm font-medium hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            )
-          ))}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-4">
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full glass-morphism border-t border-white/10 py-4 px-6 animate-in slide-in-from-top duration-300">
-          <div className="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              link.to.startsWith('/#') ? (
+        <div className="hidden md:flex items-center gap-2 glass-card px-6 py-3 rounded-full">
+          {navLinks.map((link, index) => (
+            <motion.div
+              key={link.name}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {link.to.startsWith("/#") ? (
                 <a
-                  key={link.name}
                   href={link.to}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-primary transition-colors py-2"
+                  className="relative px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors group"
                 >
                   {link.name}
+                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-neon-green transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </a>
               ) : (
                 <Link
-                  key={link.name}
                   to={link.to}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-primary transition-colors py-2"
+                  className="relative px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors group"
                 >
                   {link.name}
+                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-neon-green transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </Link>
-              )
-            ))}
-          </div>
+              )}
+            </motion.div>
+          ))}
         </div>
-      )}
-    </nav>
+
+        <div className="hidden md:block">
+          <Link to="/contact">
+            <motion.button
+              className="btn-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Let's Talk
+            </motion.button>
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 text-white hover:text-neon-green transition-colors"
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass-card mt-4 mx-4 rounded-3xl overflow-hidden"
+          >
+            <div className="flex flex-col p-6 space-y-4">
+              {navLinks.map((link) =>
+                link.to.startsWith("/#") ? (
+                  <a
+                    key={link.name}
+                    href={link.to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-lg font-medium text-neutral-300 hover:text-white transition-colors py-2"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-lg font-medium text-neutral-300 hover:text-white transition-colors py-2"
+                  >
+                    {link.name}
+                  </Link>
+                ),
+              )}
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <button className="w-full btn-primary mt-4">Let's Talk</button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }
