@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ScrollTop = () => {
+  const { pathname } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const toggleVisibility = () => {
