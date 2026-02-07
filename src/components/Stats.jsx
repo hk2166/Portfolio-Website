@@ -60,15 +60,8 @@ const Stats = () => {
               My <span className="gradient-text">Education</span>
             </h2>
             <div className="w-20 h-1.5 bg-gradient-to-r from-neon-green to-transparent rounded-full mb-8"></div>
-            <p className="text-lg text-neutral-400 leading-relaxed mb-10">
-              Currently pursuing dual degrees in Computer Science, bridging
-              theoretical foundations at IIT Madras with practical engineering
-              at ADYPU. This unique path provides comprehensive understanding
-              and real-world application.
-            </p>
 
             {/* Stats Cards */}
-
 
             {/* Quote Card */}
             <motion.div
@@ -125,17 +118,10 @@ const Stats = () => {
                     {item.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-1 text-white group-hover:text-neon-green transition-colors">
-                      {item.degree}
-                    </h3>
                     <p className="text-sm font-semibold text-neutral-300 mb-3">
                       {item.major}
                     </p>
                     <div className="flex flex-col gap-2">
-                      <p className="text-sm text-neutral-400 flex items-center gap-2">
-                        <MapPin size={14} className="text-neon-green" />{" "}
-                        {item.institution}
-                      </p>
                       <p className="text-sm text-neon-green font-medium flex items-center gap-2">
                         <Calendar size={14} /> {item.duration}
                       </p>
