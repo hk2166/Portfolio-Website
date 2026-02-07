@@ -19,6 +19,31 @@ export function SplineBackground() {
     setMounted(false);
   }, [mode]);
 
+  useEffect(() => {
+    const hideSplineLogo = () => {
+      const style = document.createElement('style');
+      style.textContent = `
+        spline-viewer::part(logo) {
+          display: none !important;
+        }
+        spline-viewer .spline-watermark,
+        spline-viewer [data-spline-logo],
+        spline-viewer iframe + div {
+          display: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+      return () => {
+        if (document.head.contains(style)) {
+          document.head.removeChild(style);
+        }
+      };
+    };
+    
+    const cleanup = hideSplineLogo();
+    return cleanup;
+  }, []);
+
   if (!mode) return null;
 
   const url = SPLINE_URLS[mode];
@@ -26,24 +51,24 @@ export function SplineBackground() {
   return (
     <AnimatePresence>
       {mounted && (
-    <motion.div
-            key={mode}
-            className="fixed inset-0 z-0 pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-          >
-            <spline-viewer
-              url={url}
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "block",
-                pointerEvents: "none",
-              }}
-            />
-          {/* Overlay to darken and tint - pointer-events-none so clicks pass through to content above */}
+        <motion.div
+          key={mode}
+          className="fixed inset-0"
+          style={{ zIndex: 5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5 }}
+        >
+          <spline-viewer
+            url={url}
+            loading-anim-type="none"
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 pointer-events-none" />
         </motion.div>
       )}

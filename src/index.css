@@ -216,3 +216,22 @@
 .animate-fade-in {
   animation: fade-in 1.5s ease-out forwards;
 }
+
+/* Hide Spline watermark/logo */
+spline-viewer::part(logo),
+spline-viewer .spline-watermark,
+spline-viewer [data-spline-logo] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Target Spline iframe's parent element that might contain the logo */
+spline-viewer iframe + div {
+  display: none !important;
+}
+
+/* Alternative targeting for the Spline logo */
+spline-viewer div[style*="position: absolute"][style*="bottom: 20px"][style*="right: 20px"] {
+  display: none !important;
+}
