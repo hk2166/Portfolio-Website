@@ -12,44 +12,53 @@ import {
   Cog,
   Navigation,
   Gauge,
+  Server,
+  Wrench,
+  Brain,
 } from "lucide-react";
 import { useMode } from "../context/ModeContext";
 
 const devSkills = [
   {
-    icon: <Monitor className="w-8 h-8" />,
-    title: "Web Development",
-    desc: "Building responsive, user-friendly websites with React, Tailwind CSS, and modern JavaScript frameworks. Clean code and optimized performance.",
+    icon: <Code2 className="w-8 h-8" />,
+    title: "Frontend Development",
+    desc: "Building modern, responsive interfaces with cutting-edge frameworks and technologies.",
+    tags: ["JavaScript", "TypeScript", "HTML", "CSS", "React", "Vue"],
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: <Code2 className="w-8 h-8" />,
-    title: "Programming",
-    desc: "Strong foundation in Python, JavaScript, and data structures. Algorithm design, problem-solving, and competitive programming.",
+    icon: <Monitor className="w-8 h-8" />,
+    title: "UI Frameworks",
+    desc: "Crafting beautiful, performant user experiences with modern styling and meta-frameworks.",
+    tags: ["Next.js", "Tailwind CSS"],
     color: "from-green-500 to-emerald-500",
   },
   {
-    icon: <Database className="w-8 h-8" />,
-    title: "Backend Systems",
-    desc: "Developing efficient server-side logic and database schemas. API integration and data management with modern tools.",
+    icon: <Server className="w-8 h-8" />,
+    title: "Backend & Databases",
+    desc: "Developing robust server-side applications with efficient data management and API design.",
+    tags: ["Node.js", "Express", "PostgreSQL", "MongoDB"],
     color: "from-orange-500 to-red-500",
   },
   {
-    icon: <Globe className="w-8 h-8" />,
+    icon: <Brain className="w-8 h-8" />,
     title: "AI & Machine Learning",
-    desc: "Exploring artificial intelligence and machine learning to create intelligent systems and predictive models.",
+    desc: "Building intelligent systems with generative AI, language models, and deep learning frameworks.",
+    tags: ["OpenAI", "LangChain", "TensorFlow"],
     color: "from-indigo-500 to-purple-500",
   },
   {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Mobile Development",
-    desc: "Creating seamless mobile experiences with Android development. Mobile-first design principles across all platforms.",
+    icon: <Wrench className="w-8 h-8" />,
+    title: "Developer Tools",
+    desc: "Version control, code quality, and package management for efficient development workflows.",
+    tags: ["Git", "GitHub", "Prettier", "NPM"],
     color: "from-pink-500 to-rose-500",
   },
   {
     icon: <Cpu className="w-8 h-8" />,
-    title: "DevOps & Deployment",
-    desc: "CI/CD pipelines, containerization, and cloud deployment. Ensuring smooth development workflows and reliable production systems.",
+    title: "DevOps & Cloud",
+    desc: "Containerization, server management, and cloud deployment for scalable production systems.",
+    tags: ["Linux", "Docker", "Nginx", "AWS", "Vercel"],
     color: "from-purple-500 to-pink-500",
   },
 ];
@@ -162,13 +171,25 @@ const Services = () => {
                   {skill.icon}
                 </div>
                 <h3
-                  className={`text-xl font-bold mb-4 text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
+                  className={`text-xl font-bold mb-3 text-white ${isRobotics ? "group-hover:text-blue-400" : "group-hover:text-neon-green"} transition-colors`}
                 >
                   {skill.title}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
+                <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors mb-4">
                   {skill.desc}
                 </p>
+                {skill.tags && (
+                  <div className="flex flex-wrap gap-2">
+                    {skill.tags.map((tag, tagIdx) => (
+                      <span
+                        key={tagIdx}
+                        className={`px-2 py-1 text-xs font-medium bg-neutral-900/80 text-neutral-300 rounded-full border border-white/5 ${isRobotics ? "group-hover:border-blue-400/30" : "group-hover:border-neon-green/30"} transition-colors`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Corner accent */}
