@@ -8,9 +8,9 @@ const devProjects = [
     id: 1,
     title: "DocuMind - RAG Document AI",
     description:
-      "Retrieval-Augmented Generation system to summarize and interactively query PDF documents using FAISS vector search and Google Gemini.",
+      " Built an AI-powered document question-answering system using Retrieval-Augmented Generation (RAG) to enable natural language queries over uploaded PDFs, leveraging FastAPI, Streamlit, FAISS, and Gemini for efficient retrieval and response generation.",
     image: "/rag.jpeg",
-    tags: ["Python", "FastAPI", "Streamlit", "FAISS", "Gemini"],
+    tags: ["Python", "FastAPI", "Streamlit", "FAISS", "Gemini", "RAG", "AI/ML", "NLP", "Vector Search"],
     github: "https://github.com/hk2166/DocuMind",
     demo: "https://pdfsummarizer-rag.streamlit.app/",
     gradient: "from-blue-500/20 to-purple-500/20",
@@ -21,7 +21,7 @@ const devProjects = [
     description:
       "AI-driven teaching assistant for multi-grade, low-resource classrooms with speech assessment, multilingual chatbot, quizzes, and visual aids.",
     image: "/sahayak.jpeg",
-    tags: ["React", "AI/ML", "Speech Recognition"],
+    tags: ["React", "AI/ML", "Speech Recognition", "NLP"],
     github: "https://github.com/hk2166/Sahayak",
     demo: "https://sahayak-hazel.vercel.app/",
     gradient: "from-purple-500/20 to-pink-500/20",
