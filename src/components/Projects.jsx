@@ -12,7 +12,7 @@ const devProjects = [
     image: "/rag.jpeg",
     tags: ["Python", "FastAPI", "Streamlit", "FAISS", "Gemini", "RAG", "AI/ML", "NLP", "Vector Search"],
     github: "https://github.com/hk2166/DocuMind",
-    demo: "https://pdfsummarizer-rag.streamlit.app/",
+    demo: "https://fe7f-49-206-122-42.ngrok-free.app/",
     gradient: "from-blue-500/20 to-purple-500/20",
   },
   {
