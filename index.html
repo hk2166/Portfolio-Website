@@ -4,11 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preconnect to external domains to speed up connection setup -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="dns-prefetch" href="https://prod.spline.design" />
+
     <title>portfolio-react</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <script
+      type="module"
+      async
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

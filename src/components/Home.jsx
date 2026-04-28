@@ -5,12 +5,14 @@ import WorkExperience from "./WorkExperience";
 import Stats from "./Stats";
 import About from "./About";
 import Projects from "./Projects";
+import GithubActivity from "./GithubActivity";
 import Footer from "./Footer";
 
 const Home = () => {
   return (
     <>
       <Hero />
+      <GithubActivity />
       <KeyboardSkills />
       <WorkExperience />
       <Stats />
