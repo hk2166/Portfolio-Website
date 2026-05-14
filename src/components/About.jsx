@@ -195,6 +195,7 @@ const About = () => {
                 href={isRobotics ? "/Robotics_CV.pdf" : "/Dev_CV.pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Download ${isRobotics ? "Robotics" : "Developer"} resume`}
               >
                 <motion.button
                   className="btn-primary inline-flex items-center gap-2"
@@ -209,6 +210,7 @@ const About = () => {
                   className="btn-glass inline-flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Contact me"
                 >
                   <Send size={20} /> Get in Touch
                 </motion.button>

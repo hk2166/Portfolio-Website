@@ -181,6 +181,7 @@ const Hero = () => {
                   className={`${mode === "robotics" ? "bg-blue-500 hover:bg-blue-400 text-black" : "btn-primary"} px-8 py-4 font-bold rounded-full inline-flex items-center gap-2 transition-all`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="View my projects"
                 >
                   View My Work
                   <ArrowRight
@@ -194,6 +195,7 @@ const Hero = () => {
                   className="btn-glass inline-flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Contact me"
                 >
                   Let's Connect
                 </motion.button>

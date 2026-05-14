@@ -100,7 +100,8 @@ const WorkExperience = () => {
                   >
                     <img
                       src={experience.logo}
-                      alt={experience.company}
+                      alt={`${experience.company} logo`}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </div>

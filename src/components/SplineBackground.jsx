@@ -63,6 +63,7 @@ export function SplineBackground() {
           <spline-viewer
             url={url}
             loading-anim-type="none"
+            title={mode === "robotics" ? "3D Robotics Scene Background" : "3D Developer Scene Background"}
             style={{
               width: "100%",
               height: "100%",

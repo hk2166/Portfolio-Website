@@ -192,7 +192,8 @@ const Projects = () => {
                 ></div>
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - Project screenshot`}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
@@ -203,6 +204,7 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View ${project.title} on GitHub`}
                       className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
@@ -215,6 +217,7 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View ${project.title} live demo`}
                       className={`p-3 glass-card rounded-full text-white ${isRobotics ? "hover:text-blue-400 hover:border-blue-400/50" : "hover:text-neon-green hover:border-neon-green/50"} transition-colors`}
                       whileHover={{ scale: 1.1, rotate: -5 }}
                       whileTap={{ scale: 0.9 }}

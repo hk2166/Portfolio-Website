@@ -106,7 +106,8 @@ export function Navbar() {
           {/* Mode Toggle */}
           <motion.button
             onClick={toggleMode}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all border ${
+            aria-label={isRobotics ? "Switch to Developer mode" : "Switch to Robotics mode"}
+            className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all border ${
               isRobotics
                 ? "border-blue-400/30 text-blue-400 hover:bg-blue-400/10"
                 : "border-neon-green/30 text-neon-green hover:bg-neon-green/10"
@@ -132,6 +133,7 @@ export function Navbar() {
               className={isRobotics ? "bg-blue-500 text-black font-bold px-8 py-4 rounded-full transition-all hover:bg-blue-400" : "btn-primary"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Contact me"
             >
               Let's Talk
             </motion.button>
@@ -141,7 +143,9 @@ export function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 text-white ${isRobotics ? "hover:text-blue-400" : "hover:text-neon-green"} transition-colors`}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          className={`md:hidden p-3 text-white ${isRobotics ? "hover:text-blue-400" : "hover:text-neon-green"} transition-colors`}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -185,7 +189,8 @@ export function Navbar() {
                   toggleMode();
                   setIsMobileMenuOpen(false);
                 }}
-                className={`flex items-center gap-2 py-2 text-lg font-medium transition-colors ${
+                aria-label={isRobotics ? "Switch to Developer mode" : "Switch to Robotics mode"}
+                className={`flex items-center gap-2 py-3 text-lg font-medium transition-colors ${
                   isRobotics ? "text-blue-400" : "text-neon-green"
                 }`}
               >
@@ -205,6 +210,7 @@ export function Navbar() {
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 <button
                   className={`w-full mt-4 ${isRobotics ? "bg-blue-500 text-black font-bold px-8 py-4 rounded-full" : "btn-primary"}`}
+                  aria-label="Contact me"
                 >
                   Let's Talk
                 </button>
